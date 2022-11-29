@@ -1,0 +1,395 @@
+package com.g42cloud.sdk.cbr.v1;
+
+import com.g42cloud.sdk.cbr.v1.model.*;
+import com.huaweicloud.sdk.core.ClientBuilder;
+import com.huaweicloud.sdk.core.HcClient;
+import com.huaweicloud.sdk.core.invoker.AsyncInvoker;
+
+import java.util.concurrent.CompletableFuture;
+
+public class CbrAsyncClient {
+
+    protected HcClient hcClient;
+
+    public CbrAsyncClient(HcClient hcClient) {
+        this.hcClient = hcClient;
+    }
+
+    public static ClientBuilder<CbrAsyncClient> newBuilder() {
+        return new ClientBuilder<>(CbrAsyncClient::new);
+    }
+
+    public CompletableFuture<AddMemberResponse> addMemberAsync(AddMemberRequest request) {
+        return hcClient.asyncInvokeHttp(request, CbrMeta.addMember);
+    }
+
+    public AsyncInvoker<AddMemberRequest, AddMemberResponse> addMemberAsyncInvoker(AddMemberRequest request) {
+        return new AsyncInvoker<AddMemberRequest, AddMemberResponse>(request, CbrMeta.addMember, hcClient);
+    }
+
+    public CompletableFuture<AddVaultResourceResponse> addVaultResourceAsync(AddVaultResourceRequest request) {
+        return hcClient.asyncInvokeHttp(request, CbrMeta.addVaultResource);
+    }
+
+    public AsyncInvoker<AddVaultResourceRequest, AddVaultResourceResponse> addVaultResourceAsyncInvoker(
+        AddVaultResourceRequest request) {
+        return new AsyncInvoker<AddVaultResourceRequest, AddVaultResourceResponse>(request, CbrMeta.addVaultResource,
+            hcClient);
+    }
+
+    public CompletableFuture<AssociateVaultPolicyResponse> associateVaultPolicyAsync(
+        AssociateVaultPolicyRequest request) {
+        return hcClient.asyncInvokeHttp(request, CbrMeta.associateVaultPolicy);
+    }
+
+    public AsyncInvoker<AssociateVaultPolicyRequest, AssociateVaultPolicyResponse> associateVaultPolicyAsyncInvoker(
+        AssociateVaultPolicyRequest request) {
+        return new AsyncInvoker<AssociateVaultPolicyRequest, AssociateVaultPolicyResponse>(request,
+            CbrMeta.associateVaultPolicy, hcClient);
+    }
+
+    public CompletableFuture<BatchCreateAndDeleteVaultTagsResponse> batchCreateAndDeleteVaultTagsAsync(
+        BatchCreateAndDeleteVaultTagsRequest request) {
+        return hcClient.asyncInvokeHttp(request, CbrMeta.batchCreateAndDeleteVaultTags);
+    }
+
+    public AsyncInvoker<BatchCreateAndDeleteVaultTagsRequest, BatchCreateAndDeleteVaultTagsResponse> batchCreateAndDeleteVaultTagsAsyncInvoker(
+        BatchCreateAndDeleteVaultTagsRequest request) {
+        return new AsyncInvoker<BatchCreateAndDeleteVaultTagsRequest, BatchCreateAndDeleteVaultTagsResponse>(request,
+            CbrMeta.batchCreateAndDeleteVaultTags, hcClient);
+    }
+
+    public CompletableFuture<CopyBackupResponse> copyBackupAsync(CopyBackupRequest request) {
+        return hcClient.asyncInvokeHttp(request, CbrMeta.copyBackup);
+    }
+
+    public AsyncInvoker<CopyBackupRequest, CopyBackupResponse> copyBackupAsyncInvoker(CopyBackupRequest request) {
+        return new AsyncInvoker<CopyBackupRequest, CopyBackupResponse>(request, CbrMeta.copyBackup, hcClient);
+    }
+
+    public CompletableFuture<CopyCheckpointResponse> copyCheckpointAsync(CopyCheckpointRequest request) {
+        return hcClient.asyncInvokeHttp(request, CbrMeta.copyCheckpoint);
+    }
+
+    public AsyncInvoker<CopyCheckpointRequest, CopyCheckpointResponse> copyCheckpointAsyncInvoker(
+        CopyCheckpointRequest request) {
+        return new AsyncInvoker<CopyCheckpointRequest, CopyCheckpointResponse>(request, CbrMeta.copyCheckpoint,
+            hcClient);
+    }
+
+    public CompletableFuture<CreateCheckpointResponse> createCheckpointAsync(CreateCheckpointRequest request) {
+        return hcClient.asyncInvokeHttp(request, CbrMeta.createCheckpoint);
+    }
+
+    public AsyncInvoker<CreateCheckpointRequest, CreateCheckpointResponse> createCheckpointAsyncInvoker(
+        CreateCheckpointRequest request) {
+        return new AsyncInvoker<CreateCheckpointRequest, CreateCheckpointResponse>(request, CbrMeta.createCheckpoint,
+            hcClient);
+    }
+
+    public CompletableFuture<CreatePolicyResponse> createPolicyAsync(CreatePolicyRequest request) {
+        return hcClient.asyncInvokeHttp(request, CbrMeta.createPolicy);
+    }
+
+    public AsyncInvoker<CreatePolicyRequest, CreatePolicyResponse> createPolicyAsyncInvoker(
+        CreatePolicyRequest request) {
+        return new AsyncInvoker<CreatePolicyRequest, CreatePolicyResponse>(request, CbrMeta.createPolicy, hcClient);
+    }
+
+    public CompletableFuture<CreateVaultResponse> createVaultAsync(CreateVaultRequest request) {
+        return hcClient.asyncInvokeHttp(request, CbrMeta.createVault);
+    }
+
+    public AsyncInvoker<CreateVaultRequest, CreateVaultResponse> createVaultAsyncInvoker(CreateVaultRequest request) {
+        return new AsyncInvoker<CreateVaultRequest, CreateVaultResponse>(request, CbrMeta.createVault, hcClient);
+    }
+
+    public CompletableFuture<CreateVaultTagsResponse> createVaultTagsAsync(CreateVaultTagsRequest request) {
+        return hcClient.asyncInvokeHttp(request, CbrMeta.createVaultTags);
+    }
+
+    public AsyncInvoker<CreateVaultTagsRequest, CreateVaultTagsResponse> createVaultTagsAsyncInvoker(
+        CreateVaultTagsRequest request) {
+        return new AsyncInvoker<CreateVaultTagsRequest, CreateVaultTagsResponse>(request, CbrMeta.createVaultTags,
+            hcClient);
+    }
+
+    public CompletableFuture<DeleteBackupResponse> deleteBackupAsync(DeleteBackupRequest request) {
+        return hcClient.asyncInvokeHttp(request, CbrMeta.deleteBackup);
+    }
+
+    public AsyncInvoker<DeleteBackupRequest, DeleteBackupResponse> deleteBackupAsyncInvoker(
+        DeleteBackupRequest request) {
+        return new AsyncInvoker<DeleteBackupRequest, DeleteBackupResponse>(request, CbrMeta.deleteBackup, hcClient);
+    }
+
+    public CompletableFuture<DeleteMemberResponse> deleteMemberAsync(DeleteMemberRequest request) {
+        return hcClient.asyncInvokeHttp(request, CbrMeta.deleteMember);
+    }
+
+    public AsyncInvoker<DeleteMemberRequest, DeleteMemberResponse> deleteMemberAsyncInvoker(
+        DeleteMemberRequest request) {
+        return new AsyncInvoker<DeleteMemberRequest, DeleteMemberResponse>(request, CbrMeta.deleteMember, hcClient);
+    }
+
+    public CompletableFuture<DeletePolicyResponse> deletePolicyAsync(DeletePolicyRequest request) {
+        return hcClient.asyncInvokeHttp(request, CbrMeta.deletePolicy);
+    }
+
+    public AsyncInvoker<DeletePolicyRequest, DeletePolicyResponse> deletePolicyAsyncInvoker(
+        DeletePolicyRequest request) {
+        return new AsyncInvoker<DeletePolicyRequest, DeletePolicyResponse>(request, CbrMeta.deletePolicy, hcClient);
+    }
+
+    public CompletableFuture<DeleteVaultResponse> deleteVaultAsync(DeleteVaultRequest request) {
+        return hcClient.asyncInvokeHttp(request, CbrMeta.deleteVault);
+    }
+
+    public AsyncInvoker<DeleteVaultRequest, DeleteVaultResponse> deleteVaultAsyncInvoker(DeleteVaultRequest request) {
+        return new AsyncInvoker<DeleteVaultRequest, DeleteVaultResponse>(request, CbrMeta.deleteVault, hcClient);
+    }
+
+    public CompletableFuture<DeleteVaultTagResponse> deleteVaultTagAsync(DeleteVaultTagRequest request) {
+        return hcClient.asyncInvokeHttp(request, CbrMeta.deleteVaultTag);
+    }
+
+    public AsyncInvoker<DeleteVaultTagRequest, DeleteVaultTagResponse> deleteVaultTagAsyncInvoker(
+        DeleteVaultTagRequest request) {
+        return new AsyncInvoker<DeleteVaultTagRequest, DeleteVaultTagResponse>(request, CbrMeta.deleteVaultTag,
+            hcClient);
+    }
+
+    public CompletableFuture<DisassociateVaultPolicyResponse> disassociateVaultPolicyAsync(
+        DisassociateVaultPolicyRequest request) {
+        return hcClient.asyncInvokeHttp(request, CbrMeta.disassociateVaultPolicy);
+    }
+
+    public AsyncInvoker<DisassociateVaultPolicyRequest, DisassociateVaultPolicyResponse> disassociateVaultPolicyAsyncInvoker(
+        DisassociateVaultPolicyRequest request) {
+        return new AsyncInvoker<DisassociateVaultPolicyRequest, DisassociateVaultPolicyResponse>(request,
+            CbrMeta.disassociateVaultPolicy, hcClient);
+    }
+
+    public CompletableFuture<ImportBackupResponse> importBackupAsync(ImportBackupRequest request) {
+        return hcClient.asyncInvokeHttp(request, CbrMeta.importBackup);
+    }
+
+    public AsyncInvoker<ImportBackupRequest, ImportBackupResponse> importBackupAsyncInvoker(
+        ImportBackupRequest request) {
+        return new AsyncInvoker<ImportBackupRequest, ImportBackupResponse>(request, CbrMeta.importBackup, hcClient);
+    }
+
+    public CompletableFuture<ListBackupsResponse> listBackupsAsync(ListBackupsRequest request) {
+        return hcClient.asyncInvokeHttp(request, CbrMeta.listBackups);
+    }
+
+    public AsyncInvoker<ListBackupsRequest, ListBackupsResponse> listBackupsAsyncInvoker(ListBackupsRequest request) {
+        return new AsyncInvoker<ListBackupsRequest, ListBackupsResponse>(request, CbrMeta.listBackups, hcClient);
+    }
+
+    public CompletableFuture<ListOpLogsResponse> listOpLogsAsync(ListOpLogsRequest request) {
+        return hcClient.asyncInvokeHttp(request, CbrMeta.listOpLogs);
+    }
+
+    public AsyncInvoker<ListOpLogsRequest, ListOpLogsResponse> listOpLogsAsyncInvoker(ListOpLogsRequest request) {
+        return new AsyncInvoker<ListOpLogsRequest, ListOpLogsResponse>(request, CbrMeta.listOpLogs, hcClient);
+    }
+
+    public CompletableFuture<ListPoliciesResponse> listPoliciesAsync(ListPoliciesRequest request) {
+        return hcClient.asyncInvokeHttp(request, CbrMeta.listPolicies);
+    }
+
+    public AsyncInvoker<ListPoliciesRequest, ListPoliciesResponse> listPoliciesAsyncInvoker(
+        ListPoliciesRequest request) {
+        return new AsyncInvoker<ListPoliciesRequest, ListPoliciesResponse>(request, CbrMeta.listPolicies, hcClient);
+    }
+
+    public CompletableFuture<ListProtectableResponse> listProtectableAsync(ListProtectableRequest request) {
+        return hcClient.asyncInvokeHttp(request, CbrMeta.listProtectable);
+    }
+
+    public AsyncInvoker<ListProtectableRequest, ListProtectableResponse> listProtectableAsyncInvoker(
+        ListProtectableRequest request) {
+        return new AsyncInvoker<ListProtectableRequest, ListProtectableResponse>(request, CbrMeta.listProtectable,
+            hcClient);
+    }
+
+    public CompletableFuture<ListVaultResponse> listVaultAsync(ListVaultRequest request) {
+        return hcClient.asyncInvokeHttp(request, CbrMeta.listVault);
+    }
+
+    public AsyncInvoker<ListVaultRequest, ListVaultResponse> listVaultAsyncInvoker(ListVaultRequest request) {
+        return new AsyncInvoker<ListVaultRequest, ListVaultResponse>(request, CbrMeta.listVault, hcClient);
+    }
+
+    public CompletableFuture<MigrateVaultResourceResponse> migrateVaultResourceAsync(
+        MigrateVaultResourceRequest request) {
+        return hcClient.asyncInvokeHttp(request, CbrMeta.migrateVaultResource);
+    }
+
+    public AsyncInvoker<MigrateVaultResourceRequest, MigrateVaultResourceResponse> migrateVaultResourceAsyncInvoker(
+        MigrateVaultResourceRequest request) {
+        return new AsyncInvoker<MigrateVaultResourceRequest, MigrateVaultResourceResponse>(request,
+            CbrMeta.migrateVaultResource, hcClient);
+    }
+
+    public CompletableFuture<RemoveVaultResourceResponse> removeVaultResourceAsync(RemoveVaultResourceRequest request) {
+        return hcClient.asyncInvokeHttp(request, CbrMeta.removeVaultResource);
+    }
+
+    public AsyncInvoker<RemoveVaultResourceRequest, RemoveVaultResourceResponse> removeVaultResourceAsyncInvoker(
+        RemoveVaultResourceRequest request) {
+        return new AsyncInvoker<RemoveVaultResourceRequest, RemoveVaultResourceResponse>(request,
+            CbrMeta.removeVaultResource, hcClient);
+    }
+
+    public CompletableFuture<RestoreBackupResponse> restoreBackupAsync(RestoreBackupRequest request) {
+        return hcClient.asyncInvokeHttp(request, CbrMeta.restoreBackup);
+    }
+
+    public AsyncInvoker<RestoreBackupRequest, RestoreBackupResponse> restoreBackupAsyncInvoker(
+        RestoreBackupRequest request) {
+        return new AsyncInvoker<RestoreBackupRequest, RestoreBackupResponse>(request, CbrMeta.restoreBackup, hcClient);
+    }
+
+    public CompletableFuture<ShowBackupResponse> showBackupAsync(ShowBackupRequest request) {
+        return hcClient.asyncInvokeHttp(request, CbrMeta.showBackup);
+    }
+
+    public AsyncInvoker<ShowBackupRequest, ShowBackupResponse> showBackupAsyncInvoker(ShowBackupRequest request) {
+        return new AsyncInvoker<ShowBackupRequest, ShowBackupResponse>(request, CbrMeta.showBackup, hcClient);
+    }
+
+    public CompletableFuture<ShowCheckpointResponse> showCheckpointAsync(ShowCheckpointRequest request) {
+        return hcClient.asyncInvokeHttp(request, CbrMeta.showCheckpoint);
+    }
+
+    public AsyncInvoker<ShowCheckpointRequest, ShowCheckpointResponse> showCheckpointAsyncInvoker(
+        ShowCheckpointRequest request) {
+        return new AsyncInvoker<ShowCheckpointRequest, ShowCheckpointResponse>(request, CbrMeta.showCheckpoint,
+            hcClient);
+    }
+
+    public CompletableFuture<ShowMemberDetailResponse> showMemberDetailAsync(ShowMemberDetailRequest request) {
+        return hcClient.asyncInvokeHttp(request, CbrMeta.showMemberDetail);
+    }
+
+    public AsyncInvoker<ShowMemberDetailRequest, ShowMemberDetailResponse> showMemberDetailAsyncInvoker(
+        ShowMemberDetailRequest request) {
+        return new AsyncInvoker<ShowMemberDetailRequest, ShowMemberDetailResponse>(request, CbrMeta.showMemberDetail,
+            hcClient);
+    }
+
+    public CompletableFuture<ShowMembersDetailResponse> showMembersDetailAsync(ShowMembersDetailRequest request) {
+        return hcClient.asyncInvokeHttp(request, CbrMeta.showMembersDetail);
+    }
+
+    public AsyncInvoker<ShowMembersDetailRequest, ShowMembersDetailResponse> showMembersDetailAsyncInvoker(
+        ShowMembersDetailRequest request) {
+        return new AsyncInvoker<ShowMembersDetailRequest, ShowMembersDetailResponse>(request, CbrMeta.showMembersDetail,
+            hcClient);
+    }
+
+    public CompletableFuture<ShowOpLogResponse> showOpLogAsync(ShowOpLogRequest request) {
+        return hcClient.asyncInvokeHttp(request, CbrMeta.showOpLog);
+    }
+
+    public AsyncInvoker<ShowOpLogRequest, ShowOpLogResponse> showOpLogAsyncInvoker(ShowOpLogRequest request) {
+        return new AsyncInvoker<ShowOpLogRequest, ShowOpLogResponse>(request, CbrMeta.showOpLog, hcClient);
+    }
+
+    public CompletableFuture<ShowPolicyResponse> showPolicyAsync(ShowPolicyRequest request) {
+        return hcClient.asyncInvokeHttp(request, CbrMeta.showPolicy);
+    }
+
+    public AsyncInvoker<ShowPolicyRequest, ShowPolicyResponse> showPolicyAsyncInvoker(ShowPolicyRequest request) {
+        return new AsyncInvoker<ShowPolicyRequest, ShowPolicyResponse>(request, CbrMeta.showPolicy, hcClient);
+    }
+
+    public CompletableFuture<ShowProtectableResponse> showProtectableAsync(ShowProtectableRequest request) {
+        return hcClient.asyncInvokeHttp(request, CbrMeta.showProtectable);
+    }
+
+    public AsyncInvoker<ShowProtectableRequest, ShowProtectableResponse> showProtectableAsyncInvoker(
+        ShowProtectableRequest request) {
+        return new AsyncInvoker<ShowProtectableRequest, ShowProtectableResponse>(request, CbrMeta.showProtectable,
+            hcClient);
+    }
+
+    public CompletableFuture<ShowReplicationCapabilitiesResponse> showReplicationCapabilitiesAsync(
+        ShowReplicationCapabilitiesRequest request) {
+        return hcClient.asyncInvokeHttp(request, CbrMeta.showReplicationCapabilities);
+    }
+
+    public AsyncInvoker<ShowReplicationCapabilitiesRequest, ShowReplicationCapabilitiesResponse> showReplicationCapabilitiesAsyncInvoker(
+        ShowReplicationCapabilitiesRequest request) {
+        return new AsyncInvoker<ShowReplicationCapabilitiesRequest, ShowReplicationCapabilitiesResponse>(request,
+            CbrMeta.showReplicationCapabilities, hcClient);
+    }
+
+    public CompletableFuture<ShowVaultResponse> showVaultAsync(ShowVaultRequest request) {
+        return hcClient.asyncInvokeHttp(request, CbrMeta.showVault);
+    }
+
+    public AsyncInvoker<ShowVaultRequest, ShowVaultResponse> showVaultAsyncInvoker(ShowVaultRequest request) {
+        return new AsyncInvoker<ShowVaultRequest, ShowVaultResponse>(request, CbrMeta.showVault, hcClient);
+    }
+
+    public CompletableFuture<ShowVaultProjectTagResponse> showVaultProjectTagAsync(ShowVaultProjectTagRequest request) {
+        return hcClient.asyncInvokeHttp(request, CbrMeta.showVaultProjectTag);
+    }
+
+    public AsyncInvoker<ShowVaultProjectTagRequest, ShowVaultProjectTagResponse> showVaultProjectTagAsyncInvoker(
+        ShowVaultProjectTagRequest request) {
+        return new AsyncInvoker<ShowVaultProjectTagRequest, ShowVaultProjectTagResponse>(request,
+            CbrMeta.showVaultProjectTag, hcClient);
+    }
+
+    public CompletableFuture<ShowVaultResourceInstancesResponse> showVaultResourceInstancesAsync(
+        ShowVaultResourceInstancesRequest request) {
+        return hcClient.asyncInvokeHttp(request, CbrMeta.showVaultResourceInstances);
+    }
+
+    public AsyncInvoker<ShowVaultResourceInstancesRequest, ShowVaultResourceInstancesResponse> showVaultResourceInstancesAsyncInvoker(
+        ShowVaultResourceInstancesRequest request) {
+        return new AsyncInvoker<ShowVaultResourceInstancesRequest, ShowVaultResourceInstancesResponse>(request,
+            CbrMeta.showVaultResourceInstances, hcClient);
+    }
+
+    public CompletableFuture<ShowVaultTagResponse> showVaultTagAsync(ShowVaultTagRequest request) {
+        return hcClient.asyncInvokeHttp(request, CbrMeta.showVaultTag);
+    }
+
+    public AsyncInvoker<ShowVaultTagRequest, ShowVaultTagResponse> showVaultTagAsyncInvoker(
+        ShowVaultTagRequest request) {
+        return new AsyncInvoker<ShowVaultTagRequest, ShowVaultTagResponse>(request, CbrMeta.showVaultTag, hcClient);
+    }
+
+    public CompletableFuture<UpdateMemberStatusResponse> updateMemberStatusAsync(UpdateMemberStatusRequest request) {
+        return hcClient.asyncInvokeHttp(request, CbrMeta.updateMemberStatus);
+    }
+
+    public AsyncInvoker<UpdateMemberStatusRequest, UpdateMemberStatusResponse> updateMemberStatusAsyncInvoker(
+        UpdateMemberStatusRequest request) {
+        return new AsyncInvoker<UpdateMemberStatusRequest, UpdateMemberStatusResponse>(request,
+            CbrMeta.updateMemberStatus, hcClient);
+    }
+
+    public CompletableFuture<UpdatePolicyResponse> updatePolicyAsync(UpdatePolicyRequest request) {
+        return hcClient.asyncInvokeHttp(request, CbrMeta.updatePolicy);
+    }
+
+    public AsyncInvoker<UpdatePolicyRequest, UpdatePolicyResponse> updatePolicyAsyncInvoker(
+        UpdatePolicyRequest request) {
+        return new AsyncInvoker<UpdatePolicyRequest, UpdatePolicyResponse>(request, CbrMeta.updatePolicy, hcClient);
+    }
+
+    public CompletableFuture<UpdateVaultResponse> updateVaultAsync(UpdateVaultRequest request) {
+        return hcClient.asyncInvokeHttp(request, CbrMeta.updateVault);
+    }
+
+    public AsyncInvoker<UpdateVaultRequest, UpdateVaultResponse> updateVaultAsyncInvoker(UpdateVaultRequest request) {
+        return new AsyncInvoker<UpdateVaultRequest, UpdateVaultResponse>(request, CbrMeta.updateVault, hcClient);
+    }
+
+}

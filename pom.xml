@@ -7,7 +7,7 @@
     <packaging>pom</packaging>
     <groupId>io.github.g42cloud-sdk</groupId>
     <artifactId>g42cloud-sdk</artifactId>
-    <version>0.0.1-beta</version>
+    <version>0.0.2-beta</version>
     <name>G42 Cloud SDK for Java Parent</name>
     <description>G42 Cloud SDK for Java</description>
     <url>https://github.com/g42cloud-sdk/g42cloud-sdk-java</url>
@@ -35,7 +35,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <revision>0.0.1-beta</revision>
+        <revision>0.0.2-beta</revision>
         <snakeyaml.version>1.32</snakeyaml.version>
         <jackson.version>2.13.4</jackson.version>
         <jackson-databind.version>2.13.4.2</jackson-databind.version>
@@ -139,17 +139,6 @@
             <build>
                 <plugins>
                     <plugin>
-                        <groupId>org.sonatype.plugins</groupId>
-                        <artifactId>nexus-staging-maven-plugin</artifactId>
-                        <version>1.6.7</version>
-                        <extensions>true</extensions>
-                        <configuration>
-                            <serverId>ossrh</serverId>
-                            <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
-                            <autoReleaseAfterClose>true</autoReleaseAfterClose>
-                        </configuration>
-                    </plugin>
-                    <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-deploy-plugin</artifactId>
                         <version>2.8.2</version>
@@ -157,10 +146,10 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
-                        <version>1.5</version>
+                        <version>1.4</version>
                         <executions>
                             <execution>
-                                <id>sign-artifacts</id>
+                                <id>sign-artifacts-for-release</id>
                                 <phase>verify</phase>
                                 <goals>
                                     <goal>sign</goal>
@@ -202,15 +191,14 @@
             </build>
         </profile>
     </profiles>
-
     <distributionManagement>
         <snapshotRepository>
             <id>ossrh</id>
-            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
         </snapshotRepository>
         <repository>
             <id>ossrh</id>
-            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
     </distributionManagement>
 
