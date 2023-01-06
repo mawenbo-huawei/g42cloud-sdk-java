@@ -1,6 +1,6 @@
 package com.g42cloud.sdk.vpc.v2.model;
 
-import com.huaweicloud.sdk.core.SdkResponse;
+import com.g42cloud.sdk.core.SdkResponse;
 
 import java.util.Objects;
 

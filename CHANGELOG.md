@@ -1,3 +1,41 @@
+# 0.0.3-beta 2022-12-27
+
+### G42Cloud SDK AS
+
+- _Features_
+  - New Support AS
+- _Bug Fix_
+  - None
+- _Change_
+  - None
+
+### G42Cloud SDK BMS
+
+- _Features_
+  - New Support BMS
+- _Bug Fix_
+  - None
+- _Change_
+  - None
+
+### G42Cloud SDK IMS
+
+- _Features_
+  - New Support IMS
+- _Bug Fix_
+  - None
+- _Change_
+  - None
+
+### G42Cloud SDK SMN
+
+- _Features_
+  - New Support SMN
+- _Bug Fix_
+  - None
+- _Change_
+  - None
+
 # 0.0.2-beta 2022-11-29
 
 ### G42Cloud SDK CBR

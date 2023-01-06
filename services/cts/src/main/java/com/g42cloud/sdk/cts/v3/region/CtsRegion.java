@@ -1,9 +1,9 @@
 package com.g42cloud.sdk.cts.v3.region;
 
-import com.huaweicloud.sdk.core.region.IRegionProvider;
-import com.huaweicloud.sdk.core.region.Region;
-import com.huaweicloud.sdk.core.region.RegionProviderChain;
-import com.huaweicloud.sdk.core.utils.StringUtils;
+import com.g42cloud.sdk.core.region.IRegionProvider;
+import com.g42cloud.sdk.core.region.Region;
+import com.g42cloud.sdk.core.region.RegionProviderChain;
+import com.g42cloud.sdk.core.utils.StringUtils;
 
 import java.util.Collections;
 import java.util.HashMap;

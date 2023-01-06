@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.huaweicloud.sdk.core.SdkResponse;
+import com.g42cloud.sdk.core.SdkResponse;
 
 import java.time.OffsetDateTime;
 import java.util.Collections;

@@ -1,11 +1,11 @@
 package com.g42cloud.sdk.ces.v1;
 
 import com.g42cloud.sdk.ces.v1.model.*;
-import com.huaweicloud.sdk.core.TypeCasts;
-import com.huaweicloud.sdk.core.http.FieldExistence;
-import com.huaweicloud.sdk.core.http.HttpMethod;
-import com.huaweicloud.sdk.core.http.HttpRequestDef;
-import com.huaweicloud.sdk.core.http.LocationType;
+import com.g42cloud.sdk.core.TypeCasts;
+import com.g42cloud.sdk.core.http.FieldExistence;
+import com.g42cloud.sdk.core.http.HttpMethod;
+import com.g42cloud.sdk.core.http.HttpRequestDef;
+import com.g42cloud.sdk.core.http.LocationType;
 
 import java.util.List;
 

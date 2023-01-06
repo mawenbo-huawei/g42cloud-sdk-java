@@ -2,7 +2,7 @@ package com.g42cloud.sdk.cdn.v2.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.huaweicloud.sdk.core.SdkResponse;
+import com.g42cloud.sdk.core.SdkResponse;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,10 +30,6 @@ public class ShowTopUrlResponse extends SdkResponse {
         return this;
     }
 
-    /**
-     * 服务区域
-     * @return serviceArea
-     */
     public String getServiceArea() {
         return serviceArea;
     }
@@ -63,10 +59,6 @@ public class ShowTopUrlResponse extends SdkResponse {
         return this;
     }
 
-    /**
-     * 详情数据对象。
-     * @return topUrlSummary
-     */
     public List<Map<String, Object>> getTopUrlSummary() {
         return topUrlSummary;
     }

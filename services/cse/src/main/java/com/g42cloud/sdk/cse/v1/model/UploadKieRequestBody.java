@@ -1,9 +1,9 @@
 package com.g42cloud.sdk.cse.v1.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.huaweicloud.sdk.core.http.FormDataFilePart;
-import com.huaweicloud.sdk.core.http.FormDataPart;
-import com.huaweicloud.sdk.core.http.SdkFormDataBody;
+import com.g42cloud.sdk.core.http.FormDataFilePart;
+import com.g42cloud.sdk.core.http.FormDataPart;
+import com.g42cloud.sdk.core.http.SdkFormDataBody;
 
 import java.io.InputStream;
 import java.util.LinkedHashMap;

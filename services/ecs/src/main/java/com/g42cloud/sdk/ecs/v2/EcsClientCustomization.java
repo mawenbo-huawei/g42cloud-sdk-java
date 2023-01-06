@@ -4,8 +4,8 @@
 
 package com.g42cloud.sdk.ecs.v2;
 
-import com.huaweicloud.sdk.core.ClientCustomization;
-import com.huaweicloud.sdk.core.CustomizationConfigure;
+import com.g42cloud.sdk.core.ClientCustomization;
+import com.g42cloud.sdk.core.CustomizationConfigure;
 
 public class EcsClientCustomization implements ClientCustomization {
 

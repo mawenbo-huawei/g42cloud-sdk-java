@@ -6,27 +6,31 @@
 
     <parent>
         <groupId>io.github.g42cloud-sdk</groupId>
-        <version>0.0.2-beta</version>
+        <version>0.0.3-beta</version>
         <artifactId>g42cloud-sdk</artifactId>
     </parent>
     <artifactId>g42cloud-sdk-services</artifactId>
-    <version>0.0.2-beta</version>
+    <version>0.0.3-beta</version>
     <packaging>pom</packaging>
     <name>G42Cloud SDK for Java Services</name>
     <description>Services code for G42Cloud SDK for Java</description>
     <url>https://github.com/g42cloud-sdk/g42cloud-sdk-java</url>
 
     <modules>
-        <module>evs</module>
-        <module>ces</module>
-        <module>cse</module>
+        <module>ims</module>
         <module>cce</module>
-        <module>rds</module>
+        <module>as</module>
+        <module>ecs</module>
+        <module>cse</module>
+        <module>evs</module>
+        <module>cbr</module>
+        <module>vpc</module>
+        <module>bms</module>
         <module>elb</module>
         <module>cdn</module>
-        <module>vpc</module>
+        <module>ces</module>
+        <module>smn</module>
+        <module>rds</module>
         <module>cts</module>
-        <module>ecs</module>
-        <module>cbr</module>
     </modules>
 </project>

@@ -1,5 +1,5 @@
 <p align="center">
-<a href="https://www.g42cloud.com/"><img style="background-color:black;" width="450px" height="102px" src="https://auth.g42cloud.com//authui/20220614193554/public/custom/images/logo.svg"></a>
+<a href="https://www.g42cloud.com/"><img src="https://upload.wikimedia.org/wikipedia/en/4/43/Group_42_Logo.jpg"></a>
 </p>
 
 <h1 align="center">G42 Cloud Java Software Development Kit (Java SDK)</h1>
@@ -59,11 +59,11 @@ package com.g42cloud.sdk.test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 // Authentication
-import com.huaweicloud.sdk.core.auth.BasicCredentials;
+import com.g42cloud.sdk.core.auth.BasicCredentials;
 // Service response exception class
-import com.huaweicloud.sdk.core.exception.ServiceResponseException;
+import com.g42cloud.sdk.core.exception.ServiceResponseException;
 // Http Configuration
-import com.huaweicloud.sdk.core.http.HttpConfig;
+import com.g42cloud.sdk.core.http.HttpConfig;
 import com.g42cloud.sdk.vpc.v2.VpcClient;
 // Import the request and response classes
 import com.g42cloud.sdk.vpc.v2.model.ListVpcsRequest;
@@ -232,14 +232,6 @@ GlobalCredentials globalCredentials = new GlobalCredentials()
     .withSk(sk)
     .withDomainId(domainId);
 ```
-
-**Notice**:
-
-- projectId/domainId supports **automatic acquisition**, if you want to use this
-  feature, you need to provide the ak and sk of your account and the id of the region, and then build your client
-  instance with method `withRegion()`, detailed example could refer
-  to [3.2 Initialize the client with specified Region](#32-initialize-the-serviceclient-with-specified-region-recommended-top)
-  .
 
 #### 2.2 Use Temporary AK&SK [:top:](#user-manual-top)
 
@@ -531,9 +523,11 @@ condition use the default condition, the code would be like the following:
 
 ``` java
 // initialize the asychronous client
+String endpoint = "{endpoint}";
+
 EcsAsyncClient asyncClient = EcsAsyncClient.newBuilder()
     .withCredential(basicCredentials)
-    .withRegion(EcsRegion.CN_NORTH_4)
+    .withEndpoint(endpoint)
     .withHttpConfig(config)
     .build();
 

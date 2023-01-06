@@ -25,10 +25,6 @@ public class ErrMsg {
         return this;
     }
 
-    /**
-     * 错误码
-     * @return errorCode
-     */
     public String getErrorCode() {
         return errorCode;
     }
@@ -42,10 +38,6 @@ public class ErrMsg {
         return this;
     }
 
-    /**
-     * 错误描述
-     * @return errorMsg
-     */
     public String getErrorMsg() {
         return errorMsg;
     }

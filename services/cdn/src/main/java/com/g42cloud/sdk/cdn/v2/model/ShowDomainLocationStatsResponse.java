@@ -2,7 +2,7 @@ package com.g42cloud.sdk.cdn.v2.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.huaweicloud.sdk.core.SdkResponse;
+import com.g42cloud.sdk.core.SdkResponse;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,10 +29,6 @@ public class ShowDomainLocationStatsResponse extends SdkResponse {
         return this;
     }
 
-    /**
-     * 数据分组方式
-     * @return groupBy
-     */
     public String getGroupBy() {
         return groupBy;
     }
@@ -62,10 +58,6 @@ public class ShowDomainLocationStatsResponse extends SdkResponse {
         return this;
     }
 
-    /**
-     * 按指定的分组方式组织的数据
-     * @return result
-     */
     public Map<String, Object> getResult() {
         return result;
     }

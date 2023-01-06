@@ -2,7 +2,7 @@ package com.g42cloud.sdk.cce.v3.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.huaweicloud.sdk.core.SdkResponse;
+import com.g42cloud.sdk.core.SdkResponse;
 
 import java.util.Objects;
 import java.util.function.Consumer;

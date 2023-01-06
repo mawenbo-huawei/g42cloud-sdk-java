@@ -1,7 +1,7 @@
 package com.g42cloud.sdk.testapp;
 
-import com.huaweicloud.sdk.core.auth.BasicCredentials;
-import com.huaweicloud.sdk.core.utils.JsonUtils;
+import com.g42cloud.sdk.core.auth.BasicCredentials;
+import com.g42cloud.sdk.core.utils.JsonUtils;
 import com.g42cloud.sdk.ecs.v2.EcsClient;
 import com.g42cloud.sdk.ecs.v2.model.ServerImage;
 import org.junit.Assert;

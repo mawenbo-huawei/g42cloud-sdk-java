@@ -45,12 +45,6 @@ public class ShowTopUrlRequest {
         return this;
     }
 
-    /**
-     * 查询起始时间戳，只能传0点毫秒时间戳
-     * minimum: 0
-     * maximum: 4102416000000
-     * @return startTime
-     */
     public Long getStartTime() {
         return startTime;
     }
@@ -64,12 +58,6 @@ public class ShowTopUrlRequest {
         return this;
     }
 
-    /**
-     * 查询结束时间戳，只能传0点毫秒时间戳
-     * minimum: 0
-     * maximum: 4102416000000
-     * @return endTime
-     */
     public Long getEndTime() {
         return endTime;
     }
@@ -83,10 +71,6 @@ public class ShowTopUrlRequest {
         return this;
     }
 
-    /**
-     * 域名列表，多个域名以逗号（半角）分隔，如：www.test1.com,www.test2.com all表示查询名下全部域名
-     * @return domainName
-     */
     public String getDomainName() {
         return domainName;
     }
@@ -100,10 +84,6 @@ public class ShowTopUrlRequest {
         return this;
     }
 
-    /**
-     * - 参数类型支持：flux(流量),req_num(请求数)
-     * @return statType
-     */
     public String getStatType() {
         return statType;
     }
@@ -117,10 +97,6 @@ public class ShowTopUrlRequest {
         return this;
     }
 
-    /**
-     * 服务区域：mainland_china(大陆)，outside_mainland_china(海外)，默认为mainland_china
-     * @return serviceArea
-     */
     public String getServiceArea() {
         return serviceArea;
     }
@@ -134,10 +110,6 @@ public class ShowTopUrlRequest {
         return this;
     }
 
-    /**
-     * 当用户开启企业项目功能时，该参数生效，表示查询资源所属项目，不传表示查询默认项目。注意：当使用子账号调用接口时，该参数必传。
-     * @return enterpriseProjectId
-     */
     public String getEnterpriseProjectId() {
         return enterpriseProjectId;
     }

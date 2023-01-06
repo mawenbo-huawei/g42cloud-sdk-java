@@ -4,21 +4,21 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <groupId>io.github.g42cloud-sdk</groupId>
-        <version>0.0.2-beta</version>
+        <version>0.0.3-beta</version>
         <artifactId>g42cloud-sdk-services</artifactId>
         <relativePath>..</relativePath>
     </parent>
     <artifactId>g42cloud-sdk-evs</artifactId>
-    <version>0.0.2-beta</version>
+    <version>0.0.3-beta</version>
     <name>G42Cloud SDK for EVS</name>
 
     <modelVersion>4.0.0</modelVersion>
     <packaging>jar</packaging>
     <dependencies>
         <dependency>
-            <groupId>com.huaweicloud.sdk</groupId>
-            <artifactId>huaweicloud-sdk-core</artifactId>
-            <version>3.1.12</version>
+            <groupId>io.github.g42cloud-sdk</groupId>
+            <artifactId>g42cloud-sdk-core</artifactId>
+            <version>0.0.3-beta</version>
         </dependency>
     </dependencies>
 

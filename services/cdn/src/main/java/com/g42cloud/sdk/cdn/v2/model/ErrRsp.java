@@ -30,10 +30,6 @@ public class ErrRsp {
         return this;
     }
 
-    /**
-     * Get error
-     * @return error
-     */
     public ErrMsg getError() {
         return error;
     }

@@ -9,7 +9,7 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import com.g42cloud.sdk.ecs.v2.model.ServerImage;
-import com.huaweicloud.sdk.core.utils.StringUtils;
+import com.g42cloud.sdk.core.utils.StringUtils;
 
 import java.io.IOException;
 import java.util.Objects;
