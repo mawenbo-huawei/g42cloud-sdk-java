@@ -4,12 +4,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <groupId>io.github.g42cloud-sdk</groupId>
-        <version>0.0.3-beta</version>
+        <version>0.0.4-beta</version>
         <artifactId>g42cloud-sdk-services</artifactId>
         <relativePath>..</relativePath>
     </parent>
     <artifactId>g42cloud-sdk-as</artifactId>
-    <version>0.0.3-beta</version>
+    <version>0.0.4-beta</version>
     <name>G42Cloud SDK for AS</name>
 
     <modelVersion>4.0.0</modelVersion>
@@ -18,7 +18,7 @@
         <dependency>
             <groupId>io.github.g42cloud-sdk</groupId>
             <artifactId>g42cloud-sdk-core</artifactId>
-            <version>0.0.3-beta</version>
+            <version>0.0.4-beta</version>
         </dependency>
     </dependencies>
 

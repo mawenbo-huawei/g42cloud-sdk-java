@@ -1,4 +1,24 @@
-# 0.0.3-beta 2022-12-27
+# 0.0.4-beta # 0.0.4-beta 2023-02-20
+
+### G42Cloud SDK CBR
+
+- _Features_
+  - None
+- _Bug Fix_
+  - None
+- _Change_
+  - The request parameter `policy_id` changed to required of the interface `AssociateVaultPolicy`
+
+### G42Cloud SDK IMS
+
+- _Features_
+  - None
+- _Bug Fix_
+  - None
+- _Change_
+  - Add the enum values `IsoImage` to the request parameter `type` to the interface `CreateImage`
+
+# 0.0.3-beta 2023-01-06
 
 ### G42Cloud SDK AS
 
