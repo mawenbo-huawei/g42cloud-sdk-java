@@ -40,7 +40,6 @@ import com.g42cloud.sdk.core.internal.model.GetIdTokenRequestBody;
 import com.g42cloud.sdk.core.internal.model.GetIdTokenScopeDomainOrProjectBody;
 import com.g42cloud.sdk.core.utils.ExceptionUtils;
 import com.g42cloud.sdk.core.utils.JsonUtils;
-
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;

@@ -4,13 +4,13 @@
 
 package com.g42cloud.sdk.core.retry.backoff;
 
-import static com.g42cloud.sdk.core.utils.ValidationUtils.assertIntIsPositive;
-
 import com.g42cloud.sdk.core.Constants;
 import com.g42cloud.sdk.core.retry.RetryContext;
 import com.g42cloud.sdk.core.utils.RandomUtils;
 
 import java.security.SecureRandom;
+
+import static com.g42cloud.sdk.core.utils.ValidationUtils.assertIntIsPositive;
 
 /**
  * Default backoff strategy in SDK.

@@ -438,11 +438,6 @@ public class ChangeBaremetalNameResponsesServers {
         public static final OsEXTSTSVmStateEnum SHUTOFF = new OsEXTSTSVmStateEnum("SHUTOFF");
 
         /**
-         * Enum SUSPENDED for value: "SUSPENDED"
-         */
-        public static final OsEXTSTSVmStateEnum SUSPENDED = new OsEXTSTSVmStateEnum("SUSPENDED");
-
-        /**
          * Enum REBOOT for value: "REBOOT"
          */
         public static final OsEXTSTSVmStateEnum REBOOT = new OsEXTSTSVmStateEnum("REBOOT");
@@ -453,7 +448,6 @@ public class ChangeBaremetalNameResponsesServers {
             Map<String, OsEXTSTSVmStateEnum> map = new HashMap<>();
             map.put("RUNNING", RUNNING);
             map.put("SHUTOFF", SHUTOFF);
-            map.put("SUSPENDED", SUSPENDED);
             map.put("REBOOT", REBOOT);
             return Collections.unmodifiableMap(map);
         }

@@ -27,7 +27,6 @@ import com.g42cloud.sdk.core.exception.ConnectionException;
 import com.g42cloud.sdk.core.exception.SdkException;
 import com.g42cloud.sdk.core.exception.ServiceResponseException;
 import com.g42cloud.sdk.core.retry.backoff.BackoffStrategy;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

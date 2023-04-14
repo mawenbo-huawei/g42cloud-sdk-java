@@ -27,6 +27,8 @@ At first, you need to [download](https://maven.apache.org/download.cgi)
 and [install](https://maven.apache.org/install.html) Maven, and then declare dependencies in the `pom.xml` file in your
 Java project.
 
+Please choose a specific version number when specifying dependencies, otherwise it may cause unforeseen issues at build time.
+
 ### Individual Services
 
 You can add depenencies for the specific services only. Take using ECS and VPC SDK for example, you need to
@@ -36,12 +38,12 @@ import `g42cloud-sdk-ecs` and `g42cloud-sdk-vpc` libraries:
 <dependency>
     <groupId>io.github.g42cloud-sdk</groupId>
     <artifactId>g42cloud-sdk-ecs</artifactId>
-    <version>0.0.1</version>
+    <version>[0.0.1-beta, 1.0.0)</version>
 </dependency>
 <dependency>
     <groupId>io.github.g42cloud-sdk</groupId>
     <artifactId>g42cloud-sdk-vpc</artifactId>
-    <version>0.0.1</version>
+    <version>[0.0.1-beta, 1.0.0)</version>
 </dependency>
 ```
 

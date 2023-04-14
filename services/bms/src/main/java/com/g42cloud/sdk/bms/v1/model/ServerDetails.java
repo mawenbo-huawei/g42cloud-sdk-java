@@ -108,9 +108,19 @@ public class ServerDetails {
         public static final StatusEnum ERROR = new StatusEnum("ERROR");
 
         /**
+         * Enum HARD_REBOOT for value: "HARD_REBOOT"
+         */
+        public static final StatusEnum HARD_REBOOT = new StatusEnum("HARD_REBOOT");
+
+        /**
          * Enum REBOOT for value: "REBOOT"
          */
         public static final StatusEnum REBOOT = new StatusEnum("REBOOT");
+
+        /**
+         * Enum DELETED for value: "DELETED"
+         */
+        public static final StatusEnum DELETED = new StatusEnum("DELETED");
 
         /**
          * Enum SHUTOFF for value: "SHUTOFF"
@@ -124,7 +134,9 @@ public class ServerDetails {
             map.put("ACTIVE", ACTIVE);
             map.put("BUILD", BUILD);
             map.put("ERROR", ERROR);
+            map.put("HARD_REBOOT", HARD_REBOOT);
             map.put("REBOOT", REBOOT);
+            map.put("DELETED", DELETED);
             map.put("SHUTOFF", SHUTOFF);
             return Collections.unmodifiableMap(map);
         }
@@ -331,11 +343,6 @@ public class ServerDetails {
         public static final OsEXTSTSVmStateEnum SHUTOFF = new OsEXTSTSVmStateEnum("shutoff");
 
         /**
-         * Enum SUSPENDED for value: "suspended"
-         */
-        public static final OsEXTSTSVmStateEnum SUSPENDED = new OsEXTSTSVmStateEnum("suspended");
-
-        /**
          * Enum REBOOT for value: "reboot"
          */
         public static final OsEXTSTSVmStateEnum REBOOT = new OsEXTSTSVmStateEnum("reboot");
@@ -346,7 +353,6 @@ public class ServerDetails {
             Map<String, OsEXTSTSVmStateEnum> map = new HashMap<>();
             map.put("active", ACTIVE);
             map.put("shutoff", SHUTOFF);
-            map.put("suspended", SUSPENDED);
             map.put("reboot", REBOOT);
             return Collections.unmodifiableMap(map);
         }

@@ -21,15 +21,12 @@
 
 package com.g42cloud.sdk.core.impl;
 
-import static com.g42cloud.sdk.core.Constants.SDK_EXCHANGE;
-
 import com.g42cloud.sdk.core.Constants;
 import com.g42cloud.sdk.core.HttpListener;
 import com.g42cloud.sdk.core.exchange.ApiTimer;
 import com.g42cloud.sdk.core.exchange.SdkExchange;
 import com.g42cloud.sdk.core.exchange.SdkExchangeCache;
 import com.g42cloud.sdk.core.http.HttpConfig;
-
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -41,6 +38,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
+
+import static com.g42cloud.sdk.core.Constants.SDK_EXCHANGE;
 
 /**
  * @author G42Cloud_SDK

@@ -26,7 +26,6 @@ import com.g42cloud.sdk.core.auth.SigningAlgorithm;
 import com.g42cloud.sdk.core.exception.SdkException;
 import com.g42cloud.sdk.core.utils.SignUtils;
 import com.g42cloud.sdk.core.utils.StringUtils;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

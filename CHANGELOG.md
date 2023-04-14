@@ -1,4 +1,40 @@
-# 0.0.4-beta # 0.0.4-beta 2023-02-20
+# 0.0.5-beta 2023-04-14
+
+### G42Cloud SDK Core
+
+- _Features_
+  - None
+- _Bug Fix_
+  - None
+- _Change_
+  - Optimize the code structure.
+
+### G42Cloud SDK BMS
+
+- _Features_
+  - None
+- _Bug Fix_
+  - None
+- _Change_
+  - **ShowJobInfos**
+    - changes of response param
+      - `* begin_time: date-time -> string`
+      - `* end_time: date-time -> string`
+      - `* entities.sub_jobs.begin_time: date-time -> string`
+      - `* entities.sub_jobs.end_time: date-time -> string`
+  - **ListBareMetalServers**
+    - changes of response param
+      - `+ servers.status: enum value [HARD_REBOOT,DELETED]`
+      - `- servers.OS-EXT-STS:vm_state: enum value [suspended]`
+  - **ListBareMetalServerDetails**
+    - changes of response param
+      - `+ server.status: enum value [HARD_REBOOT,DELETED]`
+      - `- server.OS-EXT-STS:vm_state: enum value [suspended]`
+  - **ChangeBaremetalServerName**
+    - changes of response param
+      - `- server.OS-EXT-STS:vm_state: enum value [SUSPENDED]`
+
+# 0.0.4-beta 2023-02-20
 
 ### G42Cloud SDK CBR
 

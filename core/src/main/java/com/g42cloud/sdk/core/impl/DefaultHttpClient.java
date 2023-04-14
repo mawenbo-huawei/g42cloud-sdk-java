@@ -30,9 +30,6 @@ import com.g42cloud.sdk.core.http.HttpClient;
 import com.g42cloud.sdk.core.http.HttpConfig;
 import com.g42cloud.sdk.core.http.HttpRequest;
 import com.g42cloud.sdk.core.http.HttpResponse;
-import com.g42cloud.sdk.core.auth.SigningAlgorithm;
-import com.g42cloud.sdk.core.ssl.DefaultSSLSocketFactory;
-import com.g42cloud.sdk.core.ssl.GMSSLSocketFactory;
 import com.g42cloud.sdk.core.ssl.IgnoreSSLVerificationFactory;
 import com.g42cloud.sdk.core.utils.ExceptionUtils;
 import com.g42cloud.sdk.core.utils.StringUtils;
@@ -103,19 +100,12 @@ public class DefaultHttpClient implements HttpClient {
 
         if (Objects.nonNull(httpConfig.getSSLSocketFactory()) && Objects.nonNull(httpConfig.getX509TrustManager())) {
             clientBuilder.sslSocketFactory(httpConfig.getSSLSocketFactory(), httpConfig.getX509TrustManager());
-        } else if (httpConfig.isIgnoreSSLVerification()) {
+        }
+        if (httpConfig.isIgnoreSSLVerification()) {
             clientBuilder.hostnameVerifier(IgnoreSSLVerificationFactory.getHostnameVerifier())
                     .sslSocketFactory(
                             IgnoreSSLVerificationFactory.getSSLContext(httpConfig.getSecureRandom()).getSocketFactory(),
                             IgnoreSSLVerificationFactory.getTrustAllManager());
-        } else if (httpConfig.getSigningAlgorithm() == SigningAlgorithm.HMAC_SHA256) {
-            clientBuilder.sslSocketFactory(
-                    DefaultSSLSocketFactory.getDefaultSSLSocketFactory(),
-                    DefaultSSLSocketFactory.getDefaultX509TrustManager());
-        } else if (httpConfig.getSigningAlgorithm() == SigningAlgorithm.HMAC_SM3) {
-            clientBuilder.sslSocketFactory(
-                    GMSSLSocketFactory.getSSLContext(httpConfig.getSecureRandom()).getSocketFactory(),
-                    GMSSLSocketFactory.getX509TrustManager());
         }
 
         clientBuilder.protocols(Collections.singletonList(Protocol.HTTP_1_1));

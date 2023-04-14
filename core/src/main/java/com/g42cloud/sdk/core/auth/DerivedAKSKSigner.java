@@ -58,11 +58,17 @@ public class DerivedAKSKSigner extends AKSKSigner {
 
     public static <T extends AbstractCredentials<T>> Map<String, String>
         sign(HttpRequest request, T credential) {
+        if (StringUtils.isEmpty(credential.getAk())) {
+            throw new SdkException("ak is required in credentials");
+        }
+        if (StringUtils.isEmpty(credential.getSk())) {
+            throw new SdkException("sk in credentials is required");
+        }
         if (StringUtils.isEmpty(credential.regionId)) {
-            throw new SdkException("regionId in credential is required when using derived auth");
+            throw new SdkException("regionId is required in credentials when using derived auth");
         }
         if (StringUtils.isEmpty(credential.derivedAuthServiceName)) {
-            throw new SdkException("derivedAuthServiceName in credential is required when using derived auth");
+            throw new SdkException("derivedAuthServiceName is required in credentials when using derived auth");
         }
 
         // ************* TASK 1: CONSTRUCT CANONICAL REQUEST *************
@@ -104,12 +110,16 @@ public class DerivedAKSKSigner extends AKSKSigner {
         // Step 2: Create Canonical URI -- the part of the URI from domain to query
         String pathOld = url.getPath();
         String canonicalUri;
-        StringBuilder canonicalUriSb = new StringBuilder();
-        String[] split = pathOld.split("/");
-        for (String urlSplit : split) {
-            canonicalUriSb.append(SignUtils.urlEncode(urlSplit, false)).append("/");
+        if (pathOld.equals("/")) {
+            canonicalUri = pathOld;
+        } else {
+            StringBuilder canonicalUriSb = new StringBuilder();
+            String[] split = pathOld.split("/");
+            for (String urlSplit : split) {
+                canonicalUriSb.append(SignUtils.urlEncode(urlSplit, false)).append("/");
+            }
+            canonicalUri = canonicalUriSb.toString();
         }
-        canonicalUri = canonicalUriSb.toString();
 
         // Step 3: Create the canonical query string. In this example (a GET request),
         // request parameters are in the query string. Query string values must

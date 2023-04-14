@@ -23,6 +23,7 @@ package com.g42cloud.sdk.core;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.g42cloud.sdk.core.auth.ICredential;
+import com.g42cloud.sdk.core.exception.HostUnreachableException;
 import com.g42cloud.sdk.core.exception.SdkException;
 import com.g42cloud.sdk.core.exception.ServerResponseException;
 import com.g42cloud.sdk.core.exception.ServiceResponseException;
@@ -38,12 +39,15 @@ import com.g42cloud.sdk.core.http.HttpResponse;
 import com.g42cloud.sdk.core.http.LocationType;
 import com.g42cloud.sdk.core.http.SdkFormDataBody;
 import com.g42cloud.sdk.core.impl.DefaultHttpClient;
+import com.g42cloud.sdk.core.utils.CastUtils;
 import com.g42cloud.sdk.core.utils.ExceptionUtils;
 import com.g42cloud.sdk.core.utils.JsonUtils;
 import com.g42cloud.sdk.core.utils.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.time.OffsetDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Collection;
@@ -55,6 +59,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.Stack;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
@@ -75,21 +80,23 @@ public class HcClient implements CustomizationConfigure {
         }
     }
 
-    private HttpClient httpClient;
+    private final HttpClient httpClient;
 
-    private String endpoint;
+    private final AtomicInteger endpointIndex = new AtomicInteger(0);
+
+    private List<String> endpoints;
 
     private ICredential credential;
 
-    private HttpConfig httpConfig;
+    private final HttpConfig httpConfig;
 
     private Map<String, String> extraHeader;
 
-    private HcClient(HttpConfig httpConfig, HttpClient httpClient, ICredential credential, String endpoint) {
+    private HcClient(HttpConfig httpConfig, HttpClient httpClient, ICredential credential, List<String> endpoints) {
         this.httpConfig = httpConfig;
         this.httpClient = httpClient;
         this.credential = credential;
-        this.endpoint = endpoint;
+        this.endpoints = endpoints;
     }
 
     HcClient(HttpConfig httpConfig, HttpClient httpClient) {
@@ -102,8 +109,8 @@ public class HcClient implements CustomizationConfigure {
         httpClient = new DefaultHttpClient(this.httpConfig);
     }
 
-    public HcClient withEndpoint(String endpoint) {
-        this.endpoint = endpoint;
+    public HcClient withEndpoints(List<String> endpoints) {
+        this.endpoints = endpoints;
         return this;
     }
 
@@ -120,16 +127,17 @@ public class HcClient implements CustomizationConfigure {
         return httpConfig;
     }
 
-    public HcClient overrideEndpoint(String endpoint) {
-        return new HcClient(this.httpConfig, this.httpClient, this.credential, endpoint);
+    public HcClient overrideEndpoints(List<String> endpoints) {
+        return new HcClient(this.httpConfig, this.httpClient, this.credential, endpoints);
     }
 
     public HcClient overrideCredential(ICredential credential) {
-        return new HcClient(this.httpConfig, this.httpClient, credential, this.endpoint);
+
+        return new HcClient(this.httpConfig, this.httpClient, credential, this.endpoints);
     }
 
     public HcClient preInvoke(Map<String, String> extraHeader) {
-        HcClient client = new HcClient(this.httpConfig, this.httpClient, this.credential, this.endpoint);
+        HcClient client = new HcClient(this.httpConfig, this.httpClient, this.credential, this.endpoints);
         client.extraHeader = extraHeader;
         return client;
     }
@@ -150,18 +158,31 @@ public class HcClient implements CustomizationConfigure {
                 .withMethod(reqDef.getMethod().toString())
                 .withUri(reqDef.getUri()));
 
-        HttpRequest httpRequest = buildRequest(request, reqDef);
-
-        if (StringUtils.isEmpty(httpRequest.getHeader(Constants.AUTHORIZATION)) && Objects.nonNull(credential)) {
-            // 鉴权，处理project_id，domain_id信息
-            httpRequest = credential.syncProcessAuthRequest(httpRequest, httpClient);
-        }
-
         String exchangeId = SdkExchangeCache.putExchange(exchange);
-        httpRequest = httpRequest.builder().addHeader(SDK_EXCHANGE, exchangeId).build();
-
         try {
-            HttpResponse httpResponse = httpClient.syncInvokeHttp(httpRequest);
+            HttpRequest httpRequest;
+            HttpResponse httpResponse;
+            while (true) {
+                try {
+                    httpRequest = buildRequest(request, reqDef);
+                    if (StringUtils.isEmpty(httpRequest.getHeader(Constants.AUTHORIZATION))
+                            && Objects.nonNull(credential)) {
+                        // 鉴权，处理project_id，domain_id信息
+                        httpRequest = credential.syncProcessAuthRequest(httpRequest, httpClient);
+                    }
+                    httpRequest = httpRequest.builder().addHeader(SDK_EXCHANGE, exchangeId).build();
+
+                    httpResponse = httpClient.syncInvokeHttp(httpRequest);
+                    break;
+                } catch (HostUnreachableException unreachableException) {
+                    if (endpointIndex.intValue() < endpoints.size() - 1) {
+                        endpointIndex.incrementAndGet();
+                    } else {
+                        endpointIndex.set(0);
+                        throw unreachableException;
+                    }
+                }
+            }
             printAccessLog(httpRequest, httpResponse, exchange);
             handleException(httpRequest, httpResponse);
             return extractResponse(httpResponse, reqDef);
@@ -219,10 +240,11 @@ public class HcClient implements CustomizationConfigure {
     }
 
     protected <ReqT, ResT> HttpRequest buildRequest(ReqT request, HttpRequestDef<ReqT, ResT> reqDef) {
+        String endpoint = this.endpoints.get(endpointIndex.intValue());
         HttpRequest.HttpRequestBuilder httpRequestBuilder = HttpRequest.newBuilder();
         httpRequestBuilder.withMethod(reqDef.getMethod())
                 .withContentType(reqDef.getContentType())
-                .withEndpoint(this.endpoint)
+                .withEndpoint(endpoint)
                 .withPath(reqDef.getUri());
 
         for (Field<ReqT, ?> field : reqDef.getRequestFields()) {
@@ -241,7 +263,24 @@ public class HcClient implements CustomizationConfigure {
                 } else if (field.getLocation() == LocationType.Path) {
                     httpRequestBuilder.addPathParam(field.getName(), convertToStringParams(reqValue));
                 } else if (field.getLocation() == LocationType.Body) {
-                    buildRequestBody(httpRequestBuilder, reqValue, request);
+                    buildRequestBody(httpRequestBuilder, reqValue);
+                } else if (field.getLocation() == LocationType.Cname) {
+                    try {
+                        URL url = new URL(
+                                endpoint.replace("\r", "").replace("\n", ""));
+                        StringBuilder endpointBuilder = new StringBuilder();
+                        endpointBuilder.append(url.getProtocol())
+                                .append("://")
+                                .append(reqValue)
+                                .append(".")
+                                .append(url.getHost());
+                        if (!StringUtils.isEmpty(url.getPath())) {
+                            endpointBuilder.append("/").append(url.getPath());
+                        }
+                        httpRequestBuilder.withEndpoint(endpointBuilder.toString());
+                    } catch (MalformedURLException e) {
+                        throw new SdkException("Failed to parse endpoint");
+                    }
                 }
             }
         }
@@ -266,9 +305,11 @@ public class HcClient implements CustomizationConfigure {
         return httpRequestBuilder.build();
     }
 
-    private <ReqT> void buildRequestBody(HttpRequest.HttpRequestBuilder httpRequestBuilder, Object reqValue, ReqT request) {
+    private void buildRequestBody(HttpRequest.HttpRequestBuilder httpRequestBuilder, Object reqValue) {
         if (reqValue instanceof SdkFormDataBody) {
             httpRequestBuilder.withFormDataPart(((SdkFormDataBody) reqValue).buildFormData());
+        } else if (reqValue instanceof SdkSerializable) {
+            httpRequestBuilder.withBodyAsString(((SdkSerializable<?>) reqValue).serialize());
         } else {
             httpRequestBuilder.withBodyAsString(JsonUtils.toJSON(reqValue));
         }
@@ -352,9 +393,11 @@ public class HcClient implements CustomizationConfigure {
                     || respContentType.startsWith(Constants.MEDIATYPE.IMAGE)
                     || respContentType.startsWith(Constants.MEDIATYPE.APPLICATION_BSON))) {
                 resT = reqDef.getResponseType().newInstance();
-                ((SdkStreamResponse) resT).parseBody(httpResponse.getBody());
+                resT = CastUtils.cast(((SdkStreamResponse) resT).parseBody(httpResponse.getBody()));
             } else {
-                if (!reqDef.hasResponseField(Constants.BODY)) {
+                if (SdkSerializable.class.isAssignableFrom(reqDef.getResponseType())) {
+                    resT = deserializeSerializableResponse(reqDef.getResponseType(), stringResult);
+                } else if (!reqDef.hasResponseField(Constants.BODY)) {
                     resT = JsonUtils.toObjectIgnoreUnknown(stringResult, reqDef.getResponseType());
                     if (Objects.isNull(resT)) {
                         resT = reqDef.getResponseType().newInstance();
@@ -388,8 +431,7 @@ public class HcClient implements CustomizationConfigure {
             });
 
             if (finalResT instanceof SdkResponse) {
-                SdkResponse sdkResponse = (SdkResponse) finalResT;
-                sdkResponse.setHttpStatusCode(httpResponse.getStatusCode());
+                ((SdkResponse) finalResT).setHttpStatusCode(httpResponse.getStatusCode());
             }
             return finalResT;
         } catch (InstantiationException | IllegalAccessException e) {
@@ -400,6 +442,13 @@ public class HcClient implements CustomizationConfigure {
             throw new ServerResponseException(httpResponse.getStatusCode(), null, "json parse error",
                     httpResponse.getHeader("X-Request-Id"));
         }
+    }
+
+    @SuppressWarnings("unchecked")
+    private <ResT> ResT deserializeSerializableResponse(Class<ResT> clazz, String string)
+            throws InstantiationException, IllegalAccessException {
+        ResT instance = clazz.newInstance();
+        return ((SdkSerializable<ResT>) instance).deserialize(string);
     }
 
     public <ResT> Object responseToObject(String respBody, Field<ResT, ?> responseField) {
