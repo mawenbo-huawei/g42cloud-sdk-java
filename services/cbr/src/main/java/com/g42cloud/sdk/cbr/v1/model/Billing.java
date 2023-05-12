@@ -20,321 +20,25 @@ public class Billing {
 
     private Integer allocated;
 
-    public static final class ChargingModeEnum {
-
-        /**
-         * Enum PRE_PAID for value: "pre_paid"
-         */
-        public static final ChargingModeEnum PRE_PAID = new ChargingModeEnum("pre_paid");
-
-        /**
-         * Enum POST_PAID for value: "post_paid"
-         */
-        public static final ChargingModeEnum POST_PAID = new ChargingModeEnum("post_paid");
-
-        private static final Map<String, ChargingModeEnum> STATIC_FIELDS = createStaticFields();
-
-        private static Map<String, ChargingModeEnum> createStaticFields() {
-            Map<String, ChargingModeEnum> map = new HashMap<>();
-            map.put("pre_paid", PRE_PAID);
-            map.put("post_paid", POST_PAID);
-            return Collections.unmodifiableMap(map);
-        }
-
-        private String value;
-
-        ChargingModeEnum(String value) {
-            this.value = value;
-        }
-
-        @JsonValue
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        @JsonCreator
-        public static ChargingModeEnum fromValue(String value) {
-            if (value == null) {
-                return null;
-            }
-            ChargingModeEnum result = STATIC_FIELDS.get(value);
-            if (result == null) {
-                result = new ChargingModeEnum(value);
-            }
-            return result;
-        }
-
-        public static ChargingModeEnum valueOf(String value) {
-            if (value == null) {
-                return null;
-            }
-            ChargingModeEnum result = STATIC_FIELDS.get(value);
-            if (result != null) {
-                return result;
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-            if (obj instanceof ChargingModeEnum) {
-                return this.value.equals(((ChargingModeEnum) obj).value);
-            }
-            return false;
-        }
-
-        @Override
-        public int hashCode() {
-            return this.value.hashCode();
-        }
-    }
-
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty(value = "charging_mode")
 
-    private ChargingModeEnum chargingMode;
-
-    public static final class CloudTypeEnum {
-
-        /**
-         * Enum PUBLIC for value: "public"
-         */
-        public static final CloudTypeEnum PUBLIC = new CloudTypeEnum("public");
-
-        /**
-         * Enum HYBRID for value: "hybrid"
-         */
-        public static final CloudTypeEnum HYBRID = new CloudTypeEnum("hybrid");
-
-        private static final Map<String, CloudTypeEnum> STATIC_FIELDS = createStaticFields();
-
-        private static Map<String, CloudTypeEnum> createStaticFields() {
-            Map<String, CloudTypeEnum> map = new HashMap<>();
-            map.put("public", PUBLIC);
-            map.put("hybrid", HYBRID);
-            return Collections.unmodifiableMap(map);
-        }
-
-        private String value;
-
-        CloudTypeEnum(String value) {
-            this.value = value;
-        }
-
-        @JsonValue
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        @JsonCreator
-        public static CloudTypeEnum fromValue(String value) {
-            if (value == null) {
-                return null;
-            }
-            CloudTypeEnum result = STATIC_FIELDS.get(value);
-            if (result == null) {
-                result = new CloudTypeEnum(value);
-            }
-            return result;
-        }
-
-        public static CloudTypeEnum valueOf(String value) {
-            if (value == null) {
-                return null;
-            }
-            CloudTypeEnum result = STATIC_FIELDS.get(value);
-            if (result != null) {
-                return result;
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-            if (obj instanceof CloudTypeEnum) {
-                return this.value.equals(((CloudTypeEnum) obj).value);
-            }
-            return false;
-        }
-
-        @Override
-        public int hashCode() {
-            return this.value.hashCode();
-        }
-    }
+    private String chargingMode;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty(value = "cloud_type")
 
-    private CloudTypeEnum cloudType;
-
-    public static final class ConsistentLevelEnum {
-
-        /**
-         * Enum APP_CONSISTENT for value: "app_consistent"
-         */
-        public static final ConsistentLevelEnum APP_CONSISTENT = new ConsistentLevelEnum("app_consistent");
-
-        /**
-         * Enum CRASH_CONSISTENT for value: "crash_consistent"
-         */
-        public static final ConsistentLevelEnum CRASH_CONSISTENT = new ConsistentLevelEnum("crash_consistent");
-
-        private static final Map<String, ConsistentLevelEnum> STATIC_FIELDS = createStaticFields();
-
-        private static Map<String, ConsistentLevelEnum> createStaticFields() {
-            Map<String, ConsistentLevelEnum> map = new HashMap<>();
-            map.put("app_consistent", APP_CONSISTENT);
-            map.put("crash_consistent", CRASH_CONSISTENT);
-            return Collections.unmodifiableMap(map);
-        }
-
-        private String value;
-
-        ConsistentLevelEnum(String value) {
-            this.value = value;
-        }
-
-        @JsonValue
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        @JsonCreator
-        public static ConsistentLevelEnum fromValue(String value) {
-            if (value == null) {
-                return null;
-            }
-            ConsistentLevelEnum result = STATIC_FIELDS.get(value);
-            if (result == null) {
-                result = new ConsistentLevelEnum(value);
-            }
-            return result;
-        }
-
-        public static ConsistentLevelEnum valueOf(String value) {
-            if (value == null) {
-                return null;
-            }
-            ConsistentLevelEnum result = STATIC_FIELDS.get(value);
-            if (result != null) {
-                return result;
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-            if (obj instanceof ConsistentLevelEnum) {
-                return this.value.equals(((ConsistentLevelEnum) obj).value);
-            }
-            return false;
-        }
-
-        @Override
-        public int hashCode() {
-            return this.value.hashCode();
-        }
-    }
+    private String cloudType;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty(value = "consistent_level")
 
-    private ConsistentLevelEnum consistentLevel;
-
-    public static final class ObjectTypeEnum {
-
-        /**
-         * Enum SERVER for value: "server"
-         */
-        public static final ObjectTypeEnum SERVER = new ObjectTypeEnum("server");
-
-        /**
-         * Enum DISK for value: "disk"
-         */
-        public static final ObjectTypeEnum DISK = new ObjectTypeEnum("disk");
-
-        private static final Map<String, ObjectTypeEnum> STATIC_FIELDS = createStaticFields();
-
-        private static Map<String, ObjectTypeEnum> createStaticFields() {
-            Map<String, ObjectTypeEnum> map = new HashMap<>();
-            map.put("server", SERVER);
-            map.put("disk", DISK);
-            return Collections.unmodifiableMap(map);
-        }
-
-        private String value;
-
-        ObjectTypeEnum(String value) {
-            this.value = value;
-        }
-
-        @JsonValue
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        @JsonCreator
-        public static ObjectTypeEnum fromValue(String value) {
-            if (value == null) {
-                return null;
-            }
-            ObjectTypeEnum result = STATIC_FIELDS.get(value);
-            if (result == null) {
-                result = new ObjectTypeEnum(value);
-            }
-            return result;
-        }
-
-        public static ObjectTypeEnum valueOf(String value) {
-            if (value == null) {
-                return null;
-            }
-            ObjectTypeEnum result = STATIC_FIELDS.get(value);
-            if (result != null) {
-                return result;
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-            if (obj instanceof ObjectTypeEnum) {
-                return this.value.equals(((ObjectTypeEnum) obj).value);
-            }
-            return false;
-        }
-
-        @Override
-        public int hashCode() {
-            return this.value.hashCode();
-        }
-    }
+    private String consistentLevel;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty(value = "object_type")
 
-    private ObjectTypeEnum objectType;
+    private String objectType;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty(value = "order_id")
@@ -346,174 +50,20 @@ public class Billing {
 
     private String productId;
 
-    public static final class ProtectTypeEnum {
-
-        /**
-         * Enum BACKUP for value: "backup"
-         */
-        public static final ProtectTypeEnum BACKUP = new ProtectTypeEnum("backup");
-
-        /**
-         * Enum REPLICATION for value: "replication"
-         */
-        public static final ProtectTypeEnum REPLICATION = new ProtectTypeEnum("replication");
-
-        /**
-         * Enum HYBRID for value: "hybrid"
-         */
-        public static final ProtectTypeEnum HYBRID = new ProtectTypeEnum("hybrid");
-
-        private static final Map<String, ProtectTypeEnum> STATIC_FIELDS = createStaticFields();
-
-        private static Map<String, ProtectTypeEnum> createStaticFields() {
-            Map<String, ProtectTypeEnum> map = new HashMap<>();
-            map.put("backup", BACKUP);
-            map.put("replication", REPLICATION);
-            map.put("hybrid", HYBRID);
-            return Collections.unmodifiableMap(map);
-        }
-
-        private String value;
-
-        ProtectTypeEnum(String value) {
-            this.value = value;
-        }
-
-        @JsonValue
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        @JsonCreator
-        public static ProtectTypeEnum fromValue(String value) {
-            if (value == null) {
-                return null;
-            }
-            ProtectTypeEnum result = STATIC_FIELDS.get(value);
-            if (result == null) {
-                result = new ProtectTypeEnum(value);
-            }
-            return result;
-        }
-
-        public static ProtectTypeEnum valueOf(String value) {
-            if (value == null) {
-                return null;
-            }
-            ProtectTypeEnum result = STATIC_FIELDS.get(value);
-            if (result != null) {
-                return result;
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-            if (obj instanceof ProtectTypeEnum) {
-                return this.value.equals(((ProtectTypeEnum) obj).value);
-            }
-            return false;
-        }
-
-        @Override
-        public int hashCode() {
-            return this.value.hashCode();
-        }
-    }
-
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty(value = "protect_type")
 
-    private ProtectTypeEnum protectType;
+    private String protectType;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty(value = "size")
 
     private Integer size;
 
-    public static final class SpecCodeEnum {
-
-        /**
-         * Enum VAULT_BACKUP_SERVER_NORMAL for value: "vault.backup.server.normal"
-         */
-        public static final SpecCodeEnum VAULT_BACKUP_SERVER_NORMAL = new SpecCodeEnum("vault.backup.server.normal");
-
-        /**
-         * Enum VAULT_BACKUP_VOLUME_NORMAL for value: "vault.backup.volume.normal"
-         */
-        public static final SpecCodeEnum VAULT_BACKUP_VOLUME_NORMAL = new SpecCodeEnum("vault.backup.volume.normal");
-
-        private static final Map<String, SpecCodeEnum> STATIC_FIELDS = createStaticFields();
-
-        private static Map<String, SpecCodeEnum> createStaticFields() {
-            Map<String, SpecCodeEnum> map = new HashMap<>();
-            map.put("vault.backup.server.normal", VAULT_BACKUP_SERVER_NORMAL);
-            map.put("vault.backup.volume.normal", VAULT_BACKUP_VOLUME_NORMAL);
-            return Collections.unmodifiableMap(map);
-        }
-
-        private String value;
-
-        SpecCodeEnum(String value) {
-            this.value = value;
-        }
-
-        @JsonValue
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        @JsonCreator
-        public static SpecCodeEnum fromValue(String value) {
-            if (value == null) {
-                return null;
-            }
-            SpecCodeEnum result = STATIC_FIELDS.get(value);
-            if (result == null) {
-                result = new SpecCodeEnum(value);
-            }
-            return result;
-        }
-
-        public static SpecCodeEnum valueOf(String value) {
-            if (value == null) {
-                return null;
-            }
-            SpecCodeEnum result = STATIC_FIELDS.get(value);
-            if (result != null) {
-                return result;
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-            if (obj instanceof SpecCodeEnum) {
-                return this.value.equals(((SpecCodeEnum) obj).value);
-            }
-            return false;
-        }
-
-        @Override
-        public int hashCode() {
-            return this.value.hashCode();
-        }
-    }
-
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty(value = "spec_code")
 
-    private SpecCodeEnum specCode;
+    private String specCode;
 
     public static final class StatusEnum {
 
@@ -627,6 +177,11 @@ public class Billing {
 
     private String frozenScene;
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonProperty(value = "is_multi_az")
+
+    private Boolean isMultiAz;
+
     public Billing withAllocated(Integer allocated) {
         this.allocated = allocated;
         return this;
@@ -640,55 +195,55 @@ public class Billing {
         this.allocated = allocated;
     }
 
-    public Billing withChargingMode(ChargingModeEnum chargingMode) {
+    public Billing withChargingMode(String chargingMode) {
         this.chargingMode = chargingMode;
         return this;
     }
 
-    public ChargingModeEnum getChargingMode() {
+    public String getChargingMode() {
         return chargingMode;
     }
 
-    public void setChargingMode(ChargingModeEnum chargingMode) {
+    public void setChargingMode(String chargingMode) {
         this.chargingMode = chargingMode;
     }
 
-    public Billing withCloudType(CloudTypeEnum cloudType) {
+    public Billing withCloudType(String cloudType) {
         this.cloudType = cloudType;
         return this;
     }
 
-    public CloudTypeEnum getCloudType() {
+    public String getCloudType() {
         return cloudType;
     }
 
-    public void setCloudType(CloudTypeEnum cloudType) {
+    public void setCloudType(String cloudType) {
         this.cloudType = cloudType;
     }
 
-    public Billing withConsistentLevel(ConsistentLevelEnum consistentLevel) {
+    public Billing withConsistentLevel(String consistentLevel) {
         this.consistentLevel = consistentLevel;
         return this;
     }
 
-    public ConsistentLevelEnum getConsistentLevel() {
+    public String getConsistentLevel() {
         return consistentLevel;
     }
 
-    public void setConsistentLevel(ConsistentLevelEnum consistentLevel) {
+    public void setConsistentLevel(String consistentLevel) {
         this.consistentLevel = consistentLevel;
     }
 
-    public Billing withObjectType(ObjectTypeEnum objectType) {
+    public Billing withObjectType(String objectType) {
         this.objectType = objectType;
         return this;
     }
 
-    public ObjectTypeEnum getObjectType() {
+    public String getObjectType() {
         return objectType;
     }
 
-    public void setObjectType(ObjectTypeEnum objectType) {
+    public void setObjectType(String objectType) {
         this.objectType = objectType;
     }
 
@@ -718,16 +273,16 @@ public class Billing {
         this.productId = productId;
     }
 
-    public Billing withProtectType(ProtectTypeEnum protectType) {
+    public Billing withProtectType(String protectType) {
         this.protectType = protectType;
         return this;
     }
 
-    public ProtectTypeEnum getProtectType() {
+    public String getProtectType() {
         return protectType;
     }
 
-    public void setProtectType(ProtectTypeEnum protectType) {
+    public void setProtectType(String protectType) {
         this.protectType = protectType;
     }
 
@@ -744,16 +299,16 @@ public class Billing {
         this.size = size;
     }
 
-    public Billing withSpecCode(SpecCodeEnum specCode) {
+    public Billing withSpecCode(String specCode) {
         this.specCode = specCode;
         return this;
     }
 
-    public SpecCodeEnum getSpecCode() {
+    public String getSpecCode() {
         return specCode;
     }
 
-    public void setSpecCode(SpecCodeEnum specCode) {
+    public void setSpecCode(String specCode) {
         this.specCode = specCode;
     }
 
@@ -809,6 +364,19 @@ public class Billing {
         this.frozenScene = frozenScene;
     }
 
+    public Billing withIsMultiAz(Boolean isMultiAz) {
+        this.isMultiAz = isMultiAz;
+        return this;
+    }
+
+    public Boolean getIsMultiAz() {
+        return isMultiAz;
+    }
+
+    public void setIsMultiAz(Boolean isMultiAz) {
+        this.isMultiAz = isMultiAz;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -827,7 +395,8 @@ public class Billing {
             && Objects.equals(this.protectType, billing.protectType) && Objects.equals(this.size, billing.size)
             && Objects.equals(this.specCode, billing.specCode) && Objects.equals(this.status, billing.status)
             && Objects.equals(this.storageUnit, billing.storageUnit) && Objects.equals(this.used, billing.used)
-            && Objects.equals(this.frozenScene, billing.frozenScene);
+            && Objects.equals(this.frozenScene, billing.frozenScene)
+            && Objects.equals(this.isMultiAz, billing.isMultiAz);
     }
 
     @Override
@@ -845,7 +414,8 @@ public class Billing {
             status,
             storageUnit,
             used,
-            frozenScene);
+            frozenScene,
+            isMultiAz);
     }
 
     @Override
@@ -866,6 +436,7 @@ public class Billing {
         sb.append("    storageUnit: ").append(toIndentedString(storageUnit)).append("\n");
         sb.append("    used: ").append(toIndentedString(used)).append("\n");
         sb.append("    frozenScene: ").append(toIndentedString(frozenScene)).append("\n");
+        sb.append("    isMultiAz: ").append(toIndentedString(isMultiAz)).append("\n");
         sb.append("}");
         return sb.toString();
     }

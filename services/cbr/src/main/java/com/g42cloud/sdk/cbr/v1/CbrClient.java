@@ -56,24 +56,6 @@ public class CbrClient {
             CbrMeta.batchCreateAndDeleteVaultTags, hcClient);
     }
 
-    public CopyBackupResponse copyBackup(CopyBackupRequest request) {
-        return hcClient.syncInvokeHttp(request, CbrMeta.copyBackup);
-    }
-
-    public SyncInvoker<CopyBackupRequest, CopyBackupResponse> copyBackupInvoker(CopyBackupRequest request) {
-        return new SyncInvoker<CopyBackupRequest, CopyBackupResponse>(request, CbrMeta.copyBackup, hcClient);
-    }
-
-    public CopyCheckpointResponse copyCheckpoint(CopyCheckpointRequest request) {
-        return hcClient.syncInvokeHttp(request, CbrMeta.copyCheckpoint);
-    }
-
-    public SyncInvoker<CopyCheckpointRequest, CopyCheckpointResponse> copyCheckpointInvoker(
-        CopyCheckpointRequest request) {
-        return new SyncInvoker<CopyCheckpointRequest, CopyCheckpointResponse>(request, CbrMeta.copyCheckpoint,
-            hcClient);
-    }
-
     public CreateCheckpointResponse createCheckpoint(CreateCheckpointRequest request) {
         return hcClient.syncInvokeHttp(request, CbrMeta.createCheckpoint);
     }
@@ -162,14 +144,6 @@ public class CbrClient {
             CbrMeta.disassociateVaultPolicy, hcClient);
     }
 
-    public ImportBackupResponse importBackup(ImportBackupRequest request) {
-        return hcClient.syncInvokeHttp(request, CbrMeta.importBackup);
-    }
-
-    public SyncInvoker<ImportBackupRequest, ImportBackupResponse> importBackupInvoker(ImportBackupRequest request) {
-        return new SyncInvoker<ImportBackupRequest, ImportBackupResponse>(request, CbrMeta.importBackup, hcClient);
-    }
-
     public ListBackupsResponse listBackups(ListBackupsRequest request) {
         return hcClient.syncInvokeHttp(request, CbrMeta.listBackups);
     }
@@ -210,16 +184,6 @@ public class CbrClient {
 
     public SyncInvoker<ListVaultRequest, ListVaultResponse> listVaultInvoker(ListVaultRequest request) {
         return new SyncInvoker<ListVaultRequest, ListVaultResponse>(request, CbrMeta.listVault, hcClient);
-    }
-
-    public MigrateVaultResourceResponse migrateVaultResource(MigrateVaultResourceRequest request) {
-        return hcClient.syncInvokeHttp(request, CbrMeta.migrateVaultResource);
-    }
-
-    public SyncInvoker<MigrateVaultResourceRequest, MigrateVaultResourceResponse> migrateVaultResourceInvoker(
-        MigrateVaultResourceRequest request) {
-        return new SyncInvoker<MigrateVaultResourceRequest, MigrateVaultResourceResponse>(request,
-            CbrMeta.migrateVaultResource, hcClient);
     }
 
     public RemoveVaultResourceResponse removeVaultResource(RemoveVaultResourceRequest request) {
@@ -302,16 +266,6 @@ public class CbrClient {
         ShowProtectableRequest request) {
         return new SyncInvoker<ShowProtectableRequest, ShowProtectableResponse>(request, CbrMeta.showProtectable,
             hcClient);
-    }
-
-    public ShowReplicationCapabilitiesResponse showReplicationCapabilities(ShowReplicationCapabilitiesRequest request) {
-        return hcClient.syncInvokeHttp(request, CbrMeta.showReplicationCapabilities);
-    }
-
-    public SyncInvoker<ShowReplicationCapabilitiesRequest, ShowReplicationCapabilitiesResponse> showReplicationCapabilitiesInvoker(
-        ShowReplicationCapabilitiesRequest request) {
-        return new SyncInvoker<ShowReplicationCapabilitiesRequest, ShowReplicationCapabilitiesResponse>(request,
-            CbrMeta.showReplicationCapabilities, hcClient);
     }
 
     public ShowVaultResponse showVault(ShowVaultRequest request) {

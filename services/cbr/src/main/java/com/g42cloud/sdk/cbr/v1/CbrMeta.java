@@ -140,62 +140,6 @@ public class CbrMeta {
         return builder.build();
     }
 
-    public static final HttpRequestDef<CopyBackupRequest, CopyBackupResponse> copyBackup = genForcopyBackup();
-
-    private static HttpRequestDef<CopyBackupRequest, CopyBackupResponse> genForcopyBackup() {
-        // basic
-        HttpRequestDef.Builder<CopyBackupRequest, CopyBackupResponse> builder =
-            HttpRequestDef.builder(HttpMethod.POST, CopyBackupRequest.class, CopyBackupResponse.class)
-                .withName("CopyBackup")
-                .withUri("/v3/{project_id}/backups/{backup_id}/replicate")
-                .withContentType("application/json;charset=UTF-8");
-
-        // requests
-        builder.<String>withRequestField("backup_id",
-            LocationType.Path,
-            FieldExistence.NON_NULL_NON_EMPTY,
-            TypeCasts.uncheckedConversion(String.class),
-            f -> f.withMarshaller(CopyBackupRequest::getBackupId, (req, v) -> {
-                req.setBackupId(v);
-            }));
-        builder.<BackupReplicateReq>withRequestField("body",
-            LocationType.Body,
-            FieldExistence.NON_NULL_NON_EMPTY,
-            TypeCasts.uncheckedConversion(BackupReplicateReq.class),
-            f -> f.withMarshaller(CopyBackupRequest::getBody, (req, v) -> {
-                req.setBody(v);
-            }));
-
-        // response
-
-        return builder.build();
-    }
-
-    public static final HttpRequestDef<CopyCheckpointRequest, CopyCheckpointResponse> copyCheckpoint =
-        genForcopyCheckpoint();
-
-    private static HttpRequestDef<CopyCheckpointRequest, CopyCheckpointResponse> genForcopyCheckpoint() {
-        // basic
-        HttpRequestDef.Builder<CopyCheckpointRequest, CopyCheckpointResponse> builder =
-            HttpRequestDef.builder(HttpMethod.POST, CopyCheckpointRequest.class, CopyCheckpointResponse.class)
-                .withName("CopyCheckpoint")
-                .withUri("/v3/{project_id}/checkpoints/replicate")
-                .withContentType("application/json;charset=UTF-8");
-
-        // requests
-        builder.<CheckpointReplicateReq>withRequestField("body",
-            LocationType.Body,
-            FieldExistence.NON_NULL_NON_EMPTY,
-            TypeCasts.uncheckedConversion(CheckpointReplicateReq.class),
-            f -> f.withMarshaller(CopyCheckpointRequest::getBody, (req, v) -> {
-                req.setBody(v);
-            }));
-
-        // response
-
-        return builder.build();
-    }
-
     public static final HttpRequestDef<CreateCheckpointRequest, CreateCheckpointResponse> createCheckpoint =
         genForcreateCheckpoint();
 
@@ -468,30 +412,6 @@ public class CbrMeta {
         return builder.build();
     }
 
-    public static final HttpRequestDef<ImportBackupRequest, ImportBackupResponse> importBackup = genForimportBackup();
-
-    private static HttpRequestDef<ImportBackupRequest, ImportBackupResponse> genForimportBackup() {
-        // basic
-        HttpRequestDef.Builder<ImportBackupRequest, ImportBackupResponse> builder =
-            HttpRequestDef.builder(HttpMethod.POST, ImportBackupRequest.class, ImportBackupResponse.class)
-                .withName("ImportBackup")
-                .withUri("/v3/{project_id}/backups/sync")
-                .withContentType("application/json;charset=UTF-8");
-
-        // requests
-        builder.<BackupSyncReq>withRequestField("body",
-            LocationType.Body,
-            FieldExistence.NON_NULL_NON_EMPTY,
-            TypeCasts.uncheckedConversion(BackupSyncReq.class),
-            f -> f.withMarshaller(ImportBackupRequest::getBody, (req, v) -> {
-                req.setBody(v);
-            }));
-
-        // response
-
-        return builder.build();
-    }
-
     public static final HttpRequestDef<ListBackupsRequest, ListBackupsResponse> listBackups = genForlistBackups();
 
     private static HttpRequestDef<ListBackupsRequest, ListBackupsResponse> genForlistBackups() {
@@ -524,10 +444,10 @@ public class CbrMeta {
             f -> f.withMarshaller(ListBackupsRequest::getEndTime, (req, v) -> {
                 req.setEndTime(v);
             }));
-        builder.<ListBackupsRequest.ImageTypeEnum>withRequestField("image_type",
+        builder.<String>withRequestField("image_type",
             LocationType.Query,
             FieldExistence.NULL_IGNORE,
-            TypeCasts.uncheckedConversion(ListBackupsRequest.ImageTypeEnum.class),
+            TypeCasts.uncheckedConversion(String.class),
             f -> f.withMarshaller(ListBackupsRequest::getImageType, (req, v) -> {
                 req.setImageType(v);
             }));
@@ -580,10 +500,10 @@ public class CbrMeta {
             f -> f.withMarshaller(ListBackupsRequest::getResourceName, (req, v) -> {
                 req.setResourceName(v);
             }));
-        builder.<ListBackupsRequest.ResourceTypeEnum>withRequestField("resource_type",
+        builder.<String>withRequestField("resource_type",
             LocationType.Query,
             FieldExistence.NULL_IGNORE,
-            TypeCasts.uncheckedConversion(ListBackupsRequest.ResourceTypeEnum.class),
+            TypeCasts.uncheckedConversion(String.class),
             f -> f.withMarshaller(ListBackupsRequest::getResourceType, (req, v) -> {
                 req.setResourceType(v);
             }));
@@ -656,6 +576,13 @@ public class CbrMeta {
             TypeCasts.uncheckedConversion(Boolean.class),
             f -> f.withMarshaller(ListBackupsRequest::getShowReplication, (req, v) -> {
                 req.setShowReplication(v);
+            }));
+        builder.<Boolean>withRequestField("incremental",
+            LocationType.Query,
+            FieldExistence.NULL_IGNORE,
+            TypeCasts.uncheckedConversion(Boolean.class),
+            f -> f.withMarshaller(ListBackupsRequest::getIncremental, (req, v) -> {
+                req.setIncremental(v);
             }));
 
         // response
@@ -901,17 +828,17 @@ public class CbrMeta {
             f -> f.withMarshaller(ListVaultRequest::getOffset, (req, v) -> {
                 req.setOffset(v);
             }));
-        builder.<ListVaultRequest.CloudTypeEnum>withRequestField("cloud_type",
+        builder.<String>withRequestField("cloud_type",
             LocationType.Query,
             FieldExistence.NULL_IGNORE,
-            TypeCasts.uncheckedConversion(ListVaultRequest.CloudTypeEnum.class),
+            TypeCasts.uncheckedConversion(String.class),
             f -> f.withMarshaller(ListVaultRequest::getCloudType, (req, v) -> {
                 req.setCloudType(v);
             }));
-        builder.<ListVaultRequest.ProtectTypeEnum>withRequestField("protect_type",
+        builder.<String>withRequestField("protect_type",
             LocationType.Query,
             FieldExistence.NULL_IGNORE,
-            TypeCasts.uncheckedConversion(ListVaultRequest.ProtectTypeEnum.class),
+            TypeCasts.uncheckedConversion(String.class),
             f -> f.withMarshaller(ListVaultRequest::getProtectType, (req, v) -> {
                 req.setProtectType(v);
             }));
@@ -956,38 +883,6 @@ public class CbrMeta {
             TypeCasts.uncheckedConversion(String.class),
             f -> f.withMarshaller(ListVaultRequest::getResourceIds, (req, v) -> {
                 req.setResourceIds(v);
-            }));
-
-        // response
-
-        return builder.build();
-    }
-
-    public static final HttpRequestDef<MigrateVaultResourceRequest, MigrateVaultResourceResponse> migrateVaultResource =
-        genFormigrateVaultResource();
-
-    private static HttpRequestDef<MigrateVaultResourceRequest, MigrateVaultResourceResponse> genFormigrateVaultResource() {
-        // basic
-        HttpRequestDef.Builder<MigrateVaultResourceRequest, MigrateVaultResourceResponse> builder = HttpRequestDef
-            .builder(HttpMethod.POST, MigrateVaultResourceRequest.class, MigrateVaultResourceResponse.class)
-            .withName("MigrateVaultResource")
-            .withUri("/v3/{project_id}/vaults/{vault_id}/migrateresources")
-            .withContentType("application/json;charset=UTF-8");
-
-        // requests
-        builder.<String>withRequestField("vault_id",
-            LocationType.Path,
-            FieldExistence.NON_NULL_NON_EMPTY,
-            TypeCasts.uncheckedConversion(String.class),
-            f -> f.withMarshaller(MigrateVaultResourceRequest::getVaultId, (req, v) -> {
-                req.setVaultId(v);
-            }));
-        builder.<VaultMigrateResourceReq>withRequestField("body",
-            LocationType.Body,
-            FieldExistence.NON_NULL_NON_EMPTY,
-            TypeCasts.uncheckedConversion(VaultMigrateResourceReq.class),
-            f -> f.withMarshaller(MigrateVaultResourceRequest::getBody, (req, v) -> {
-                req.setBody(v);
             }));
 
         // response
@@ -1295,27 +1190,6 @@ public class CbrMeta {
             f -> f.withMarshaller(ShowProtectableRequest::getProtectableType, (req, v) -> {
                 req.setProtectableType(v);
             }));
-
-        // response
-
-        return builder.build();
-    }
-
-    public static final HttpRequestDef<ShowReplicationCapabilitiesRequest, ShowReplicationCapabilitiesResponse> showReplicationCapabilities =
-        genForshowReplicationCapabilities();
-
-    private static HttpRequestDef<ShowReplicationCapabilitiesRequest, ShowReplicationCapabilitiesResponse> genForshowReplicationCapabilities() {
-        // basic
-        HttpRequestDef.Builder<ShowReplicationCapabilitiesRequest, ShowReplicationCapabilitiesResponse> builder =
-            HttpRequestDef
-                .builder(HttpMethod.GET,
-                    ShowReplicationCapabilitiesRequest.class,
-                    ShowReplicationCapabilitiesResponse.class)
-                .withName("ShowReplicationCapabilities")
-                .withUri("/v3/{project_id}/replication-capabilities")
-                .withContentType("application/json");
-
-        // requests
 
         // response
 

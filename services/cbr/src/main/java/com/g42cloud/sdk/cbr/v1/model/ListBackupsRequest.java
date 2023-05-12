@@ -30,84 +30,10 @@ public class ListBackupsRequest {
 
     private String endTime;
 
-    public static final class ImageTypeEnum {
-
-        /**
-         * Enum BACKUP for value: "backup"
-         */
-        public static final ImageTypeEnum BACKUP = new ImageTypeEnum("backup");
-
-        /**
-         * Enum REPLICATION for value: "replication"
-         */
-        public static final ImageTypeEnum REPLICATION = new ImageTypeEnum("replication");
-
-        private static final Map<String, ImageTypeEnum> STATIC_FIELDS = createStaticFields();
-
-        private static Map<String, ImageTypeEnum> createStaticFields() {
-            Map<String, ImageTypeEnum> map = new HashMap<>();
-            map.put("backup", BACKUP);
-            map.put("replication", REPLICATION);
-            return Collections.unmodifiableMap(map);
-        }
-
-        private String value;
-
-        ImageTypeEnum(String value) {
-            this.value = value;
-        }
-
-        @JsonValue
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        @JsonCreator
-        public static ImageTypeEnum fromValue(String value) {
-            if (value == null) {
-                return null;
-            }
-            ImageTypeEnum result = STATIC_FIELDS.get(value);
-            if (result == null) {
-                result = new ImageTypeEnum(value);
-            }
-            return result;
-        }
-
-        public static ImageTypeEnum valueOf(String value) {
-            if (value == null) {
-                return null;
-            }
-            ImageTypeEnum result = STATIC_FIELDS.get(value);
-            if (result != null) {
-                return result;
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-            if (obj instanceof ImageTypeEnum) {
-                return this.value.equals(((ImageTypeEnum) obj).value);
-            }
-            return false;
-        }
-
-        @Override
-        public int hashCode() {
-            return this.value.hashCode();
-        }
-    }
-
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty(value = "image_type")
 
-    private ImageTypeEnum imageType;
+    private String imageType;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty(value = "limit")
@@ -144,84 +70,10 @@ public class ListBackupsRequest {
 
     private String resourceName;
 
-    public static final class ResourceTypeEnum {
-
-        /**
-         * Enum OS_CINDER_VOLUME for value: "OS::Cinder::Volume"
-         */
-        public static final ResourceTypeEnum OS_CINDER_VOLUME = new ResourceTypeEnum("OS::Cinder::Volume");
-
-        /**
-         * Enum OS_NOVA_SERVER for value: "OS::Nova::Server"
-         */
-        public static final ResourceTypeEnum OS_NOVA_SERVER = new ResourceTypeEnum("OS::Nova::Server");
-
-        private static final Map<String, ResourceTypeEnum> STATIC_FIELDS = createStaticFields();
-
-        private static Map<String, ResourceTypeEnum> createStaticFields() {
-            Map<String, ResourceTypeEnum> map = new HashMap<>();
-            map.put("OS::Cinder::Volume", OS_CINDER_VOLUME);
-            map.put("OS::Nova::Server", OS_NOVA_SERVER);
-            return Collections.unmodifiableMap(map);
-        }
-
-        private String value;
-
-        ResourceTypeEnum(String value) {
-            this.value = value;
-        }
-
-        @JsonValue
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        @JsonCreator
-        public static ResourceTypeEnum fromValue(String value) {
-            if (value == null) {
-                return null;
-            }
-            ResourceTypeEnum result = STATIC_FIELDS.get(value);
-            if (result == null) {
-                result = new ResourceTypeEnum(value);
-            }
-            return result;
-        }
-
-        public static ResourceTypeEnum valueOf(String value) {
-            if (value == null) {
-                return null;
-            }
-            ResourceTypeEnum result = STATIC_FIELDS.get(value);
-            if (result != null) {
-                return result;
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-            if (obj instanceof ResourceTypeEnum) {
-                return this.value.equals(((ResourceTypeEnum) obj).value);
-            }
-            return false;
-        }
-
-        @Override
-        public int hashCode() {
-            return this.value.hashCode();
-        }
-    }
-
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty(value = "resource_type")
 
-    private ResourceTypeEnum resourceType;
+    private String resourceType;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty(value = "sort")
@@ -543,6 +395,11 @@ public class ListBackupsRequest {
 
     private Boolean showReplication;
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonProperty(value = "incremental")
+
+    private Boolean incremental;
+
     public ListBackupsRequest withCheckpointId(String checkpointId) {
         this.checkpointId = checkpointId;
         return this;
@@ -582,16 +439,16 @@ public class ListBackupsRequest {
         this.endTime = endTime;
     }
 
-    public ListBackupsRequest withImageType(ImageTypeEnum imageType) {
+    public ListBackupsRequest withImageType(String imageType) {
         this.imageType = imageType;
         return this;
     }
 
-    public ImageTypeEnum getImageType() {
+    public String getImageType() {
         return imageType;
     }
 
-    public void setImageType(ImageTypeEnum imageType) {
+    public void setImageType(String imageType) {
         this.imageType = imageType;
     }
 
@@ -686,16 +543,16 @@ public class ListBackupsRequest {
         this.resourceName = resourceName;
     }
 
-    public ListBackupsRequest withResourceType(ResourceTypeEnum resourceType) {
+    public ListBackupsRequest withResourceType(String resourceType) {
         this.resourceType = resourceType;
         return this;
     }
 
-    public ResourceTypeEnum getResourceType() {
+    public String getResourceType() {
         return resourceType;
     }
 
-    public void setResourceType(ResourceTypeEnum resourceType) {
+    public void setResourceType(String resourceType) {
         this.resourceType = resourceType;
     }
 
@@ -829,6 +686,19 @@ public class ListBackupsRequest {
         this.showReplication = showReplication;
     }
 
+    public ListBackupsRequest withIncremental(Boolean incremental) {
+        this.incremental = incremental;
+        return this;
+    }
+
+    public Boolean getIncremental() {
+        return incremental;
+    }
+
+    public void setIncremental(Boolean incremental) {
+        this.incremental = incremental;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -859,7 +729,8 @@ public class ListBackupsRequest {
             && Objects.equals(this.memberStatus, listBackupsRequest.memberStatus)
             && Objects.equals(this.parentId, listBackupsRequest.parentId)
             && Objects.equals(this.usedPercent, listBackupsRequest.usedPercent)
-            && Objects.equals(this.showReplication, listBackupsRequest.showReplication);
+            && Objects.equals(this.showReplication, listBackupsRequest.showReplication)
+            && Objects.equals(this.incremental, listBackupsRequest.incremental);
     }
 
     @Override
@@ -885,7 +756,8 @@ public class ListBackupsRequest {
             memberStatus,
             parentId,
             usedPercent,
-            showReplication);
+            showReplication,
+            incremental);
     }
 
     @Override
@@ -914,6 +786,7 @@ public class ListBackupsRequest {
         sb.append("    parentId: ").append(toIndentedString(parentId)).append("\n");
         sb.append("    usedPercent: ").append(toIndentedString(usedPercent)).append("\n");
         sb.append("    showReplication: ").append(toIndentedString(showReplication)).append("\n");
+        sb.append("    incremental: ").append(toIndentedString(incremental)).append("\n");
         sb.append("}");
         return sb.toString();
     }

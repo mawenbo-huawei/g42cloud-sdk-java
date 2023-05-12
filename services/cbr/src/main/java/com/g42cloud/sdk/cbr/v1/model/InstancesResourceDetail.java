@@ -7,35 +7,35 @@ import java.util.Objects;
 import java.util.function.Consumer;
 
 /**
- * 执行复制请求体
+ * 
  */
-public class CheckpointReplicateReq {
+public class InstancesResourceDetail {
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    @JsonProperty(value = "replicate")
+    @JsonProperty(value = "vault")
 
-    private CheckpointReplicateParam replicate;
+    private Vault vault;
 
-    public CheckpointReplicateReq withReplicate(CheckpointReplicateParam replicate) {
-        this.replicate = replicate;
+    public InstancesResourceDetail withVault(Vault vault) {
+        this.vault = vault;
         return this;
     }
 
-    public CheckpointReplicateReq withReplicate(Consumer<CheckpointReplicateParam> replicateSetter) {
-        if (this.replicate == null) {
-            this.replicate = new CheckpointReplicateParam();
-            replicateSetter.accept(this.replicate);
+    public InstancesResourceDetail withVault(Consumer<Vault> vaultSetter) {
+        if (this.vault == null) {
+            this.vault = new Vault();
+            vaultSetter.accept(this.vault);
         }
 
         return this;
     }
 
-    public CheckpointReplicateParam getReplicate() {
-        return replicate;
+    public Vault getVault() {
+        return vault;
     }
 
-    public void setReplicate(CheckpointReplicateParam replicate) {
-        this.replicate = replicate;
+    public void setVault(Vault vault) {
+        this.vault = vault;
     }
 
     @Override
@@ -46,20 +46,20 @@ public class CheckpointReplicateReq {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        CheckpointReplicateReq checkpointReplicateReq = (CheckpointReplicateReq) o;
-        return Objects.equals(this.replicate, checkpointReplicateReq.replicate);
+        InstancesResourceDetail instancesResourceDetail = (InstancesResourceDetail) o;
+        return Objects.equals(this.vault, instancesResourceDetail.vault);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(replicate);
+        return Objects.hash(vault);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class CheckpointReplicateReq {\n");
-        sb.append("    replicate: ").append(toIndentedString(replicate)).append("\n");
+        sb.append("class InstancesResourceDetail {\n");
+        sb.append("    vault: ").append(toIndentedString(vault)).append("\n");
         sb.append("}");
         return sb.toString();
     }

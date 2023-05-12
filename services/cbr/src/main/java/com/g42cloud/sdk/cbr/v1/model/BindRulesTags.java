@@ -4,38 +4,46 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Objects;
-import java.util.function.Consumer;
 
 /**
- * Request Object
+ * 自动绑定规则标签
  */
-public class ImportBackupRequest {
+public class BindRulesTags {
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    @JsonProperty(value = "body")
+    @JsonProperty(value = "key")
 
-    private BackupSyncReq body;
+    private String key;
 
-    public ImportBackupRequest withBody(BackupSyncReq body) {
-        this.body = body;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonProperty(value = "value")
+
+    private String value;
+
+    public BindRulesTags withKey(String key) {
+        this.key = key;
         return this;
     }
 
-    public ImportBackupRequest withBody(Consumer<BackupSyncReq> bodySetter) {
-        if (this.body == null) {
-            this.body = new BackupSyncReq();
-            bodySetter.accept(this.body);
-        }
+    public String getKey() {
+        return key;
+    }
 
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public BindRulesTags withValue(String value) {
+        this.value = value;
         return this;
     }
 
-    public BackupSyncReq getBody() {
-        return body;
+    public String getValue() {
+        return value;
     }
 
-    public void setBody(BackupSyncReq body) {
-        this.body = body;
+    public void setValue(String value) {
+        this.value = value;
     }
 
     @Override
@@ -46,20 +54,21 @@ public class ImportBackupRequest {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        ImportBackupRequest importBackupRequest = (ImportBackupRequest) o;
-        return Objects.equals(this.body, importBackupRequest.body);
+        BindRulesTags bindRulesTags = (BindRulesTags) o;
+        return Objects.equals(this.key, bindRulesTags.key) && Objects.equals(this.value, bindRulesTags.value);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(body);
+        return Objects.hash(key, value);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class ImportBackupRequest {\n");
-        sb.append("    body: ").append(toIndentedString(body)).append("\n");
+        sb.append("class BindRulesTags {\n");
+        sb.append("    key: ").append(toIndentedString(key)).append("\n");
+        sb.append("    value: ").append(toIndentedString(value)).append("\n");
         sb.append("}");
         return sb.toString();
     }

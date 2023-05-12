@@ -45,17 +45,11 @@ public class Policy {
          */
         public static final OperationTypeEnum BACKUP = new OperationTypeEnum("backup");
 
-        /**
-         * Enum REPLICATION for value: "replication"
-         */
-        public static final OperationTypeEnum REPLICATION = new OperationTypeEnum("replication");
-
         private static final Map<String, OperationTypeEnum> STATIC_FIELDS = createStaticFields();
 
         private static Map<String, OperationTypeEnum> createStaticFields() {
             Map<String, OperationTypeEnum> map = new HashMap<>();
             map.put("backup", BACKUP);
-            map.put("replication", REPLICATION);
             return Collections.unmodifiableMap(map);
         }
 

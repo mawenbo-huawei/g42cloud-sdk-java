@@ -50,84 +50,10 @@ public class BackupResp {
 
     private String id;
 
-    public static final class ImageTypeEnum {
-
-        /**
-         * Enum BACKUP for value: "backup"
-         */
-        public static final ImageTypeEnum BACKUP = new ImageTypeEnum("backup");
-
-        /**
-         * Enum REPLICATION for value: "replication"
-         */
-        public static final ImageTypeEnum REPLICATION = new ImageTypeEnum("replication");
-
-        private static final Map<String, ImageTypeEnum> STATIC_FIELDS = createStaticFields();
-
-        private static Map<String, ImageTypeEnum> createStaticFields() {
-            Map<String, ImageTypeEnum> map = new HashMap<>();
-            map.put("backup", BACKUP);
-            map.put("replication", REPLICATION);
-            return Collections.unmodifiableMap(map);
-        }
-
-        private String value;
-
-        ImageTypeEnum(String value) {
-            this.value = value;
-        }
-
-        @JsonValue
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        @JsonCreator
-        public static ImageTypeEnum fromValue(String value) {
-            if (value == null) {
-                return null;
-            }
-            ImageTypeEnum result = STATIC_FIELDS.get(value);
-            if (result == null) {
-                result = new ImageTypeEnum(value);
-            }
-            return result;
-        }
-
-        public static ImageTypeEnum valueOf(String value) {
-            if (value == null) {
-                return null;
-            }
-            ImageTypeEnum result = STATIC_FIELDS.get(value);
-            if (result != null) {
-                return result;
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-            if (obj instanceof ImageTypeEnum) {
-                return this.value.equals(((ImageTypeEnum) obj).value);
-            }
-            return false;
-        }
-
-        @Override
-        public int hashCode() {
-            return this.value.hashCode();
-        }
-    }
-
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty(value = "image_type")
 
-    private ImageTypeEnum imageType;
+    private String imageType;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty(value = "name")
@@ -169,84 +95,10 @@ public class BackupResp {
 
     private Integer resourceSize;
 
-    public static final class ResourceTypeEnum {
-
-        /**
-         * Enum OS_NOVA_SERVER for value: "OS::Nova::Server"
-         */
-        public static final ResourceTypeEnum OS_NOVA_SERVER = new ResourceTypeEnum("OS::Nova::Server");
-
-        /**
-         * Enum OS_CINDER_VOLUME for value: "OS::Cinder::Volume"
-         */
-        public static final ResourceTypeEnum OS_CINDER_VOLUME = new ResourceTypeEnum("OS::Cinder::Volume");
-
-        private static final Map<String, ResourceTypeEnum> STATIC_FIELDS = createStaticFields();
-
-        private static Map<String, ResourceTypeEnum> createStaticFields() {
-            Map<String, ResourceTypeEnum> map = new HashMap<>();
-            map.put("OS::Nova::Server", OS_NOVA_SERVER);
-            map.put("OS::Cinder::Volume", OS_CINDER_VOLUME);
-            return Collections.unmodifiableMap(map);
-        }
-
-        private String value;
-
-        ResourceTypeEnum(String value) {
-            this.value = value;
-        }
-
-        @JsonValue
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        @JsonCreator
-        public static ResourceTypeEnum fromValue(String value) {
-            if (value == null) {
-                return null;
-            }
-            ResourceTypeEnum result = STATIC_FIELDS.get(value);
-            if (result == null) {
-                result = new ResourceTypeEnum(value);
-            }
-            return result;
-        }
-
-        public static ResourceTypeEnum valueOf(String value) {
-            if (value == null) {
-                return null;
-            }
-            ResourceTypeEnum result = STATIC_FIELDS.get(value);
-            if (result != null) {
-                return result;
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-            if (obj instanceof ResourceTypeEnum) {
-                return this.value.equals(((ResourceTypeEnum) obj).value);
-            }
-            return false;
-        }
-
-        @Override
-        public int hashCode() {
-            return this.value.hashCode();
-        }
-    }
-
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty(value = "resource_type")
 
-    private ResourceTypeEnum resourceType;
+    private String resourceType;
 
     public static final class StatusEnum {
 
@@ -480,16 +332,16 @@ public class BackupResp {
         this.id = id;
     }
 
-    public BackupResp withImageType(ImageTypeEnum imageType) {
+    public BackupResp withImageType(String imageType) {
         this.imageType = imageType;
         return this;
     }
 
-    public ImageTypeEnum getImageType() {
+    public String getImageType() {
         return imageType;
     }
 
-    public void setImageType(ImageTypeEnum imageType) {
+    public void setImageType(String imageType) {
         this.imageType = imageType;
     }
 
@@ -597,16 +449,16 @@ public class BackupResp {
         this.resourceSize = resourceSize;
     }
 
-    public BackupResp withResourceType(ResourceTypeEnum resourceType) {
+    public BackupResp withResourceType(String resourceType) {
         this.resourceType = resourceType;
         return this;
     }
 
-    public ResourceTypeEnum getResourceType() {
+    public String getResourceType() {
         return resourceType;
     }
 
-    public void setResourceType(ResourceTypeEnum resourceType) {
+    public void setResourceType(String resourceType) {
         this.resourceType = resourceType;
     }
 

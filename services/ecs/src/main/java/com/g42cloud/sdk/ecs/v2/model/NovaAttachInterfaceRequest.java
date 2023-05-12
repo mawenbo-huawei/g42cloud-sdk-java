@@ -1,4 +1,4 @@
-package com.g42cloud.sdk.cbr.v1.model;
+package com.g42cloud.sdk.ecs.v2.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -9,50 +9,50 @@ import java.util.function.Consumer;
 /**
  * Request Object
  */
-public class MigrateVaultResourceRequest {
+public class NovaAttachInterfaceRequest {
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    @JsonProperty(value = "vault_id")
+    @JsonProperty(value = "server_id")
 
-    private String vaultId;
+    private String serverId;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty(value = "body")
 
-    private VaultMigrateResourceReq body;
+    private NovaAttachInterfaceRequestBody body;
 
-    public MigrateVaultResourceRequest withVaultId(String vaultId) {
-        this.vaultId = vaultId;
+    public NovaAttachInterfaceRequest withServerId(String serverId) {
+        this.serverId = serverId;
         return this;
     }
 
-    public String getVaultId() {
-        return vaultId;
+    public String getServerId() {
+        return serverId;
     }
 
-    public void setVaultId(String vaultId) {
-        this.vaultId = vaultId;
+    public void setServerId(String serverId) {
+        this.serverId = serverId;
     }
 
-    public MigrateVaultResourceRequest withBody(VaultMigrateResourceReq body) {
+    public NovaAttachInterfaceRequest withBody(NovaAttachInterfaceRequestBody body) {
         this.body = body;
         return this;
     }
 
-    public MigrateVaultResourceRequest withBody(Consumer<VaultMigrateResourceReq> bodySetter) {
+    public NovaAttachInterfaceRequest withBody(Consumer<NovaAttachInterfaceRequestBody> bodySetter) {
         if (this.body == null) {
-            this.body = new VaultMigrateResourceReq();
+            this.body = new NovaAttachInterfaceRequestBody();
             bodySetter.accept(this.body);
         }
 
         return this;
     }
 
-    public VaultMigrateResourceReq getBody() {
+    public NovaAttachInterfaceRequestBody getBody() {
         return body;
     }
 
-    public void setBody(VaultMigrateResourceReq body) {
+    public void setBody(NovaAttachInterfaceRequestBody body) {
         this.body = body;
     }
 
@@ -64,21 +64,21 @@ public class MigrateVaultResourceRequest {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        MigrateVaultResourceRequest migrateVaultResourceRequest = (MigrateVaultResourceRequest) o;
-        return Objects.equals(this.vaultId, migrateVaultResourceRequest.vaultId)
-            && Objects.equals(this.body, migrateVaultResourceRequest.body);
+        NovaAttachInterfaceRequest novaAttachInterfaceRequest = (NovaAttachInterfaceRequest) o;
+        return Objects.equals(this.serverId, novaAttachInterfaceRequest.serverId)
+            && Objects.equals(this.body, novaAttachInterfaceRequest.body);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(vaultId, body);
+        return Objects.hash(serverId, body);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class MigrateVaultResourceRequest {\n");
-        sb.append("    vaultId: ").append(toIndentedString(vaultId)).append("\n");
+        sb.append("class NovaAttachInterfaceRequest {\n");
+        sb.append("    serverId: ").append(toIndentedString(serverId)).append("\n");
         sb.append("    body: ").append(toIndentedString(body)).append("\n");
         sb.append("}");
         return sb.toString();

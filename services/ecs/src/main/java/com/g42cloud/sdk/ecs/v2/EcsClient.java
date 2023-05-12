@@ -350,6 +350,16 @@ public class EcsClient {
             EcsMeta.novaAssociateSecurityGroup, hcClient);
     }
 
+    public NovaAttachInterfaceResponse novaAttachInterface(NovaAttachInterfaceRequest request) {
+        return hcClient.syncInvokeHttp(request, EcsMeta.novaAttachInterface);
+    }
+
+    public SyncInvoker<NovaAttachInterfaceRequest, NovaAttachInterfaceResponse> novaAttachInterfaceInvoker(
+        NovaAttachInterfaceRequest request) {
+        return new SyncInvoker<NovaAttachInterfaceRequest, NovaAttachInterfaceResponse>(request,
+            EcsMeta.novaAttachInterface, hcClient);
+    }
+
     public NovaCreateKeypairResponse novaCreateKeypair(NovaCreateKeypairRequest request) {
         return hcClient.syncInvokeHttp(request, EcsMeta.novaCreateKeypair);
     }

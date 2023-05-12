@@ -148,6 +148,11 @@ public class BackupExtendInfo {
 
     private Boolean systemDisk;
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonProperty(value = "is_multi_az")
+
+    private Boolean isMultiAz;
+
     public BackupExtendInfo withAutoTrigger(Boolean autoTrigger) {
         this.autoTrigger = autoTrigger;
         return this;
@@ -294,6 +299,19 @@ public class BackupExtendInfo {
         this.systemDisk = systemDisk;
     }
 
+    public BackupExtendInfo withIsMultiAz(Boolean isMultiAz) {
+        this.isMultiAz = isMultiAz;
+        return this;
+    }
+
+    public Boolean getIsMultiAz() {
+        return isMultiAz;
+    }
+
+    public void setIsMultiAz(Boolean isMultiAz) {
+        this.isMultiAz = isMultiAz;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -312,7 +330,8 @@ public class BackupExtendInfo {
             && Objects.equals(this.osImagesData, backupExtendInfo.osImagesData)
             && Objects.equals(this.containSystemDisk, backupExtendInfo.containSystemDisk)
             && Objects.equals(this.encrypted, backupExtendInfo.encrypted)
-            && Objects.equals(this.systemDisk, backupExtendInfo.systemDisk);
+            && Objects.equals(this.systemDisk, backupExtendInfo.systemDisk)
+            && Objects.equals(this.isMultiAz, backupExtendInfo.isMultiAz);
     }
 
     @Override
@@ -326,7 +345,8 @@ public class BackupExtendInfo {
             osImagesData,
             containSystemDisk,
             encrypted,
-            systemDisk);
+            systemDisk,
+            isMultiAz);
     }
 
     @Override
@@ -343,6 +363,7 @@ public class BackupExtendInfo {
         sb.append("    containSystemDisk: ").append(toIndentedString(containSystemDisk)).append("\n");
         sb.append("    encrypted: ").append(toIndentedString(encrypted)).append("\n");
         sb.append("    systemDisk: ").append(toIndentedString(systemDisk)).append("\n");
+        sb.append("    isMultiAz: ").append(toIndentedString(isMultiAz)).append("\n");
         sb.append("}");
         return sb.toString();
     }

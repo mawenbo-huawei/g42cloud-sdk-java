@@ -16,411 +16,35 @@ import java.util.function.Consumer;
  */
 public class BillingCreate {
 
-    public static final class CloudTypeEnum {
-
-        /**
-         * Enum PUBLIC for value: "public"
-         */
-        public static final CloudTypeEnum PUBLIC = new CloudTypeEnum("public");
-
-        /**
-         * Enum HYBRID for value: "hybrid"
-         */
-        public static final CloudTypeEnum HYBRID = new CloudTypeEnum("hybrid");
-
-        private static final Map<String, CloudTypeEnum> STATIC_FIELDS = createStaticFields();
-
-        private static Map<String, CloudTypeEnum> createStaticFields() {
-            Map<String, CloudTypeEnum> map = new HashMap<>();
-            map.put("public", PUBLIC);
-            map.put("hybrid", HYBRID);
-            return Collections.unmodifiableMap(map);
-        }
-
-        private String value;
-
-        CloudTypeEnum(String value) {
-            this.value = value;
-        }
-
-        @JsonValue
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        @JsonCreator
-        public static CloudTypeEnum fromValue(String value) {
-            if (value == null) {
-                return null;
-            }
-            CloudTypeEnum result = STATIC_FIELDS.get(value);
-            if (result == null) {
-                result = new CloudTypeEnum(value);
-            }
-            return result;
-        }
-
-        public static CloudTypeEnum valueOf(String value) {
-            if (value == null) {
-                return null;
-            }
-            CloudTypeEnum result = STATIC_FIELDS.get(value);
-            if (result != null) {
-                return result;
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-            if (obj instanceof CloudTypeEnum) {
-                return this.value.equals(((CloudTypeEnum) obj).value);
-            }
-            return false;
-        }
-
-        @Override
-        public int hashCode() {
-            return this.value.hashCode();
-        }
-    }
-
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty(value = "cloud_type")
 
-    private CloudTypeEnum cloudType;
-
-    public static final class ConsistentLevelEnum {
-
-        /**
-         * Enum APP_CONSISTENT for value: "app_consistent"
-         */
-        public static final ConsistentLevelEnum APP_CONSISTENT = new ConsistentLevelEnum("app_consistent");
-
-        /**
-         * Enum CRASH_CONSISTENT for value: "crash_consistent"
-         */
-        public static final ConsistentLevelEnum CRASH_CONSISTENT = new ConsistentLevelEnum("crash_consistent");
-
-        private static final Map<String, ConsistentLevelEnum> STATIC_FIELDS = createStaticFields();
-
-        private static Map<String, ConsistentLevelEnum> createStaticFields() {
-            Map<String, ConsistentLevelEnum> map = new HashMap<>();
-            map.put("app_consistent", APP_CONSISTENT);
-            map.put("crash_consistent", CRASH_CONSISTENT);
-            return Collections.unmodifiableMap(map);
-        }
-
-        private String value;
-
-        ConsistentLevelEnum(String value) {
-            this.value = value;
-        }
-
-        @JsonValue
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        @JsonCreator
-        public static ConsistentLevelEnum fromValue(String value) {
-            if (value == null) {
-                return null;
-            }
-            ConsistentLevelEnum result = STATIC_FIELDS.get(value);
-            if (result == null) {
-                result = new ConsistentLevelEnum(value);
-            }
-            return result;
-        }
-
-        public static ConsistentLevelEnum valueOf(String value) {
-            if (value == null) {
-                return null;
-            }
-            ConsistentLevelEnum result = STATIC_FIELDS.get(value);
-            if (result != null) {
-                return result;
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-            if (obj instanceof ConsistentLevelEnum) {
-                return this.value.equals(((ConsistentLevelEnum) obj).value);
-            }
-            return false;
-        }
-
-        @Override
-        public int hashCode() {
-            return this.value.hashCode();
-        }
-    }
+    private String cloudType;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty(value = "consistent_level")
 
-    private ConsistentLevelEnum consistentLevel;
-
-    public static final class ObjectTypeEnum {
-
-        /**
-         * Enum SERVER for value: "server"
-         */
-        public static final ObjectTypeEnum SERVER = new ObjectTypeEnum("server");
-
-        /**
-         * Enum DISK for value: "disk"
-         */
-        public static final ObjectTypeEnum DISK = new ObjectTypeEnum("disk");
-
-        /**
-         * Enum TURBO for value: "turbo"
-         */
-        public static final ObjectTypeEnum TURBO = new ObjectTypeEnum("turbo");
-
-        private static final Map<String, ObjectTypeEnum> STATIC_FIELDS = createStaticFields();
-
-        private static Map<String, ObjectTypeEnum> createStaticFields() {
-            Map<String, ObjectTypeEnum> map = new HashMap<>();
-            map.put("server", SERVER);
-            map.put("disk", DISK);
-            map.put("turbo", TURBO);
-            return Collections.unmodifiableMap(map);
-        }
-
-        private String value;
-
-        ObjectTypeEnum(String value) {
-            this.value = value;
-        }
-
-        @JsonValue
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        @JsonCreator
-        public static ObjectTypeEnum fromValue(String value) {
-            if (value == null) {
-                return null;
-            }
-            ObjectTypeEnum result = STATIC_FIELDS.get(value);
-            if (result == null) {
-                result = new ObjectTypeEnum(value);
-            }
-            return result;
-        }
-
-        public static ObjectTypeEnum valueOf(String value) {
-            if (value == null) {
-                return null;
-            }
-            ObjectTypeEnum result = STATIC_FIELDS.get(value);
-            if (result != null) {
-                return result;
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-            if (obj instanceof ObjectTypeEnum) {
-                return this.value.equals(((ObjectTypeEnum) obj).value);
-            }
-            return false;
-        }
-
-        @Override
-        public int hashCode() {
-            return this.value.hashCode();
-        }
-    }
+    private String consistentLevel;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty(value = "object_type")
 
-    private ObjectTypeEnum objectType;
-
-    public static final class ProtectTypeEnum {
-
-        /**
-         * Enum BACKUP for value: "backup"
-         */
-        public static final ProtectTypeEnum BACKUP = new ProtectTypeEnum("backup");
-
-        /**
-         * Enum REPLICATION for value: "replication"
-         */
-        public static final ProtectTypeEnum REPLICATION = new ProtectTypeEnum("replication");
-
-        private static final Map<String, ProtectTypeEnum> STATIC_FIELDS = createStaticFields();
-
-        private static Map<String, ProtectTypeEnum> createStaticFields() {
-            Map<String, ProtectTypeEnum> map = new HashMap<>();
-            map.put("backup", BACKUP);
-            map.put("replication", REPLICATION);
-            return Collections.unmodifiableMap(map);
-        }
-
-        private String value;
-
-        ProtectTypeEnum(String value) {
-            this.value = value;
-        }
-
-        @JsonValue
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        @JsonCreator
-        public static ProtectTypeEnum fromValue(String value) {
-            if (value == null) {
-                return null;
-            }
-            ProtectTypeEnum result = STATIC_FIELDS.get(value);
-            if (result == null) {
-                result = new ProtectTypeEnum(value);
-            }
-            return result;
-        }
-
-        public static ProtectTypeEnum valueOf(String value) {
-            if (value == null) {
-                return null;
-            }
-            ProtectTypeEnum result = STATIC_FIELDS.get(value);
-            if (result != null) {
-                return result;
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-            if (obj instanceof ProtectTypeEnum) {
-                return this.value.equals(((ProtectTypeEnum) obj).value);
-            }
-            return false;
-        }
-
-        @Override
-        public int hashCode() {
-            return this.value.hashCode();
-        }
-    }
+    private String objectType;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty(value = "protect_type")
 
-    private ProtectTypeEnum protectType;
+    private String protectType;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty(value = "size")
 
     private Integer size;
 
-    public static final class ChargingModeEnum {
-
-        /**
-         * Enum POST_PAID for value: "post_paid"
-         */
-        public static final ChargingModeEnum POST_PAID = new ChargingModeEnum("post_paid");
-
-        /**
-         * Enum PRE_PAID for value: "pre_paid"
-         */
-        public static final ChargingModeEnum PRE_PAID = new ChargingModeEnum("pre_paid");
-
-        private static final Map<String, ChargingModeEnum> STATIC_FIELDS = createStaticFields();
-
-        private static Map<String, ChargingModeEnum> createStaticFields() {
-            Map<String, ChargingModeEnum> map = new HashMap<>();
-            map.put("post_paid", POST_PAID);
-            map.put("pre_paid", PRE_PAID);
-            return Collections.unmodifiableMap(map);
-        }
-
-        private String value;
-
-        ChargingModeEnum(String value) {
-            this.value = value;
-        }
-
-        @JsonValue
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        @JsonCreator
-        public static ChargingModeEnum fromValue(String value) {
-            if (value == null) {
-                return null;
-            }
-            ChargingModeEnum result = STATIC_FIELDS.get(value);
-            if (result == null) {
-                result = new ChargingModeEnum(value);
-            }
-            return result;
-        }
-
-        public static ChargingModeEnum valueOf(String value) {
-            if (value == null) {
-                return null;
-            }
-            ChargingModeEnum result = STATIC_FIELDS.get(value);
-            if (result != null) {
-                return result;
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-            if (obj instanceof ChargingModeEnum) {
-                return this.value.equals(((ChargingModeEnum) obj).value);
-            }
-            return false;
-        }
-
-        @Override
-        public int hashCode() {
-            return this.value.hashCode();
-        }
-    }
-
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty(value = "charging_mode")
 
-    private ChargingModeEnum chargingMode;
+    private String chargingMode;
 
     public static final class PeriodTypeEnum {
 
@@ -522,59 +146,79 @@ public class BillingCreate {
     private String consoleUrl;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonProperty(value = "is_multi_az")
+
+    private Boolean isMultiAz;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonProperty(value = "promotion_info")
+
+    private String promotionInfo;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonProperty(value = "purchase_mode")
+
+    private String purchaseMode;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonProperty(value = "order_id")
+
+    private String orderId;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty(value = "extra_info")
 
     private BillbingCreateExtraInfo extraInfo;
 
-    public BillingCreate withCloudType(CloudTypeEnum cloudType) {
+    public BillingCreate withCloudType(String cloudType) {
         this.cloudType = cloudType;
         return this;
     }
 
-    public CloudTypeEnum getCloudType() {
+    public String getCloudType() {
         return cloudType;
     }
 
-    public void setCloudType(CloudTypeEnum cloudType) {
+    public void setCloudType(String cloudType) {
         this.cloudType = cloudType;
     }
 
-    public BillingCreate withConsistentLevel(ConsistentLevelEnum consistentLevel) {
+    public BillingCreate withConsistentLevel(String consistentLevel) {
         this.consistentLevel = consistentLevel;
         return this;
     }
 
-    public ConsistentLevelEnum getConsistentLevel() {
+    public String getConsistentLevel() {
         return consistentLevel;
     }
 
-    public void setConsistentLevel(ConsistentLevelEnum consistentLevel) {
+    public void setConsistentLevel(String consistentLevel) {
         this.consistentLevel = consistentLevel;
     }
 
-    public BillingCreate withObjectType(ObjectTypeEnum objectType) {
+    public BillingCreate withObjectType(String objectType) {
         this.objectType = objectType;
         return this;
     }
 
-    public ObjectTypeEnum getObjectType() {
+    public String getObjectType() {
         return objectType;
     }
 
-    public void setObjectType(ObjectTypeEnum objectType) {
+    public void setObjectType(String objectType) {
         this.objectType = objectType;
     }
 
-    public BillingCreate withProtectType(ProtectTypeEnum protectType) {
+    public BillingCreate withProtectType(String protectType) {
         this.protectType = protectType;
         return this;
     }
 
-    public ProtectTypeEnum getProtectType() {
+    public String getProtectType() {
         return protectType;
     }
 
-    public void setProtectType(ProtectTypeEnum protectType) {
+    public void setProtectType(String protectType) {
         this.protectType = protectType;
     }
 
@@ -591,16 +235,16 @@ public class BillingCreate {
         this.size = size;
     }
 
-    public BillingCreate withChargingMode(ChargingModeEnum chargingMode) {
+    public BillingCreate withChargingMode(String chargingMode) {
         this.chargingMode = chargingMode;
         return this;
     }
 
-    public ChargingModeEnum getChargingMode() {
+    public String getChargingMode() {
         return chargingMode;
     }
 
-    public void setChargingMode(ChargingModeEnum chargingMode) {
+    public void setChargingMode(String chargingMode) {
         this.chargingMode = chargingMode;
     }
 
@@ -669,6 +313,58 @@ public class BillingCreate {
         this.consoleUrl = consoleUrl;
     }
 
+    public BillingCreate withIsMultiAz(Boolean isMultiAz) {
+        this.isMultiAz = isMultiAz;
+        return this;
+    }
+
+    public Boolean getIsMultiAz() {
+        return isMultiAz;
+    }
+
+    public void setIsMultiAz(Boolean isMultiAz) {
+        this.isMultiAz = isMultiAz;
+    }
+
+    public BillingCreate withPromotionInfo(String promotionInfo) {
+        this.promotionInfo = promotionInfo;
+        return this;
+    }
+
+    public String getPromotionInfo() {
+        return promotionInfo;
+    }
+
+    public void setPromotionInfo(String promotionInfo) {
+        this.promotionInfo = promotionInfo;
+    }
+
+    public BillingCreate withPurchaseMode(String purchaseMode) {
+        this.purchaseMode = purchaseMode;
+        return this;
+    }
+
+    public String getPurchaseMode() {
+        return purchaseMode;
+    }
+
+    public void setPurchaseMode(String purchaseMode) {
+        this.purchaseMode = purchaseMode;
+    }
+
+    public BillingCreate withOrderId(String orderId) {
+        this.orderId = orderId;
+        return this;
+    }
+
+    public String getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
+    }
+
     public BillingCreate withExtraInfo(BillbingCreateExtraInfo extraInfo) {
         this.extraInfo = extraInfo;
         return this;
@@ -711,6 +407,10 @@ public class BillingCreate {
             && Objects.equals(this.isAutoRenew, billingCreate.isAutoRenew)
             && Objects.equals(this.isAutoPay, billingCreate.isAutoPay)
             && Objects.equals(this.consoleUrl, billingCreate.consoleUrl)
+            && Objects.equals(this.isMultiAz, billingCreate.isMultiAz)
+            && Objects.equals(this.promotionInfo, billingCreate.promotionInfo)
+            && Objects.equals(this.purchaseMode, billingCreate.purchaseMode)
+            && Objects.equals(this.orderId, billingCreate.orderId)
             && Objects.equals(this.extraInfo, billingCreate.extraInfo);
     }
 
@@ -727,6 +427,10 @@ public class BillingCreate {
             isAutoRenew,
             isAutoPay,
             consoleUrl,
+            isMultiAz,
+            promotionInfo,
+            purchaseMode,
+            orderId,
             extraInfo);
     }
 
@@ -745,6 +449,10 @@ public class BillingCreate {
         sb.append("    isAutoRenew: ").append(toIndentedString(isAutoRenew)).append("\n");
         sb.append("    isAutoPay: ").append(toIndentedString(isAutoPay)).append("\n");
         sb.append("    consoleUrl: ").append(toIndentedString(consoleUrl)).append("\n");
+        sb.append("    isMultiAz: ").append(toIndentedString(isMultiAz)).append("\n");
+        sb.append("    promotionInfo: ").append(toIndentedString(promotionInfo)).append("\n");
+        sb.append("    purchaseMode: ").append(toIndentedString(purchaseMode)).append("\n");
+        sb.append("    orderId: ").append(toIndentedString(orderId)).append("\n");
         sb.append("    extraInfo: ").append(toIndentedString(extraInfo)).append("\n");
         sb.append("}");
         return sb.toString();

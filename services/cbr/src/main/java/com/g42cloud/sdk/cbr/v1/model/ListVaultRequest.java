@@ -1,13 +1,8 @@
 package com.g42cloud.sdk.cbr.v1.model;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonValue;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -30,163 +25,15 @@ public class ListVaultRequest {
 
     private Integer offset;
 
-    public static final class CloudTypeEnum {
-
-        /**
-         * Enum PUBLIC for value: "public"
-         */
-        public static final CloudTypeEnum PUBLIC = new CloudTypeEnum("public");
-
-        /**
-         * Enum HYBRID for value: "hybrid"
-         */
-        public static final CloudTypeEnum HYBRID = new CloudTypeEnum("hybrid");
-
-        private static final Map<String, CloudTypeEnum> STATIC_FIELDS = createStaticFields();
-
-        private static Map<String, CloudTypeEnum> createStaticFields() {
-            Map<String, CloudTypeEnum> map = new HashMap<>();
-            map.put("public", PUBLIC);
-            map.put("hybrid", HYBRID);
-            return Collections.unmodifiableMap(map);
-        }
-
-        private String value;
-
-        CloudTypeEnum(String value) {
-            this.value = value;
-        }
-
-        @JsonValue
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        @JsonCreator
-        public static CloudTypeEnum fromValue(String value) {
-            if (value == null) {
-                return null;
-            }
-            CloudTypeEnum result = STATIC_FIELDS.get(value);
-            if (result == null) {
-                result = new CloudTypeEnum(value);
-            }
-            return result;
-        }
-
-        public static CloudTypeEnum valueOf(String value) {
-            if (value == null) {
-                return null;
-            }
-            CloudTypeEnum result = STATIC_FIELDS.get(value);
-            if (result != null) {
-                return result;
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-            if (obj instanceof CloudTypeEnum) {
-                return this.value.equals(((CloudTypeEnum) obj).value);
-            }
-            return false;
-        }
-
-        @Override
-        public int hashCode() {
-            return this.value.hashCode();
-        }
-    }
-
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty(value = "cloud_type")
 
-    private CloudTypeEnum cloudType;
-
-    public static final class ProtectTypeEnum {
-
-        /**
-         * Enum BACKUP for value: "backup"
-         */
-        public static final ProtectTypeEnum BACKUP = new ProtectTypeEnum("backup");
-
-        /**
-         * Enum REPLICATION for value: "replication"
-         */
-        public static final ProtectTypeEnum REPLICATION = new ProtectTypeEnum("replication");
-
-        private static final Map<String, ProtectTypeEnum> STATIC_FIELDS = createStaticFields();
-
-        private static Map<String, ProtectTypeEnum> createStaticFields() {
-            Map<String, ProtectTypeEnum> map = new HashMap<>();
-            map.put("backup", BACKUP);
-            map.put("replication", REPLICATION);
-            return Collections.unmodifiableMap(map);
-        }
-
-        private String value;
-
-        ProtectTypeEnum(String value) {
-            this.value = value;
-        }
-
-        @JsonValue
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        @JsonCreator
-        public static ProtectTypeEnum fromValue(String value) {
-            if (value == null) {
-                return null;
-            }
-            ProtectTypeEnum result = STATIC_FIELDS.get(value);
-            if (result == null) {
-                result = new ProtectTypeEnum(value);
-            }
-            return result;
-        }
-
-        public static ProtectTypeEnum valueOf(String value) {
-            if (value == null) {
-                return null;
-            }
-            ProtectTypeEnum result = STATIC_FIELDS.get(value);
-            if (result != null) {
-                return result;
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-            if (obj instanceof ProtectTypeEnum) {
-                return this.value.equals(((ProtectTypeEnum) obj).value);
-            }
-            return false;
-        }
-
-        @Override
-        public int hashCode() {
-            return this.value.hashCode();
-        }
-    }
+    private String cloudType;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty(value = "protect_type")
 
-    private ProtectTypeEnum protectType;
+    private String protectType;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty(value = "object_type")
@@ -257,29 +104,29 @@ public class ListVaultRequest {
         this.offset = offset;
     }
 
-    public ListVaultRequest withCloudType(CloudTypeEnum cloudType) {
+    public ListVaultRequest withCloudType(String cloudType) {
         this.cloudType = cloudType;
         return this;
     }
 
-    public CloudTypeEnum getCloudType() {
+    public String getCloudType() {
         return cloudType;
     }
 
-    public void setCloudType(CloudTypeEnum cloudType) {
+    public void setCloudType(String cloudType) {
         this.cloudType = cloudType;
     }
 
-    public ListVaultRequest withProtectType(ProtectTypeEnum protectType) {
+    public ListVaultRequest withProtectType(String protectType) {
         this.protectType = protectType;
         return this;
     }
 
-    public ProtectTypeEnum getProtectType() {
+    public String getProtectType() {
         return protectType;
     }
 
-    public void setProtectType(ProtectTypeEnum protectType) {
+    public void setProtectType(String protectType) {
         this.protectType = protectType;
     }
 

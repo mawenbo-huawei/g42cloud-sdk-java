@@ -108,7 +108,7 @@ public class RestoreExistingInstanceRequestBodySource {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty(value = "restore_time")
 
-    private Integer restoreTime;
+    private Long restoreTime;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty(value = "database_name")
@@ -159,16 +159,16 @@ public class RestoreExistingInstanceRequestBodySource {
         this.backupId = backupId;
     }
 
-    public RestoreExistingInstanceRequestBodySource withRestoreTime(Integer restoreTime) {
+    public RestoreExistingInstanceRequestBodySource withRestoreTime(Long restoreTime) {
         this.restoreTime = restoreTime;
         return this;
     }
 
-    public Integer getRestoreTime() {
+    public Long getRestoreTime() {
         return restoreTime;
     }
 
-    public void setRestoreTime(Integer restoreTime) {
+    public void setRestoreTime(Long restoreTime) {
         this.restoreTime = restoreTime;
     }
 

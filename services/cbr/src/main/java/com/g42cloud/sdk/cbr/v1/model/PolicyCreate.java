@@ -1,13 +1,8 @@
 package com.g42cloud.sdk.cbr.v1.model;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonValue;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Objects;
 import java.util.function.Consumer;
 
@@ -31,84 +26,10 @@ public class PolicyCreate {
 
     private PolicyoODCreate operationDefinition;
 
-    public static final class OperationTypeEnum {
-
-        /**
-         * Enum BACKUP for value: "backup"
-         */
-        public static final OperationTypeEnum BACKUP = new OperationTypeEnum("backup");
-
-        /**
-         * Enum REPLICATION for value: "replication"
-         */
-        public static final OperationTypeEnum REPLICATION = new OperationTypeEnum("replication");
-
-        private static final Map<String, OperationTypeEnum> STATIC_FIELDS = createStaticFields();
-
-        private static Map<String, OperationTypeEnum> createStaticFields() {
-            Map<String, OperationTypeEnum> map = new HashMap<>();
-            map.put("backup", BACKUP);
-            map.put("replication", REPLICATION);
-            return Collections.unmodifiableMap(map);
-        }
-
-        private String value;
-
-        OperationTypeEnum(String value) {
-            this.value = value;
-        }
-
-        @JsonValue
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        @JsonCreator
-        public static OperationTypeEnum fromValue(String value) {
-            if (value == null) {
-                return null;
-            }
-            OperationTypeEnum result = STATIC_FIELDS.get(value);
-            if (result == null) {
-                result = new OperationTypeEnum(value);
-            }
-            return result;
-        }
-
-        public static OperationTypeEnum valueOf(String value) {
-            if (value == null) {
-                return null;
-            }
-            OperationTypeEnum result = STATIC_FIELDS.get(value);
-            if (result != null) {
-                return result;
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-            if (obj instanceof OperationTypeEnum) {
-                return this.value.equals(((OperationTypeEnum) obj).value);
-            }
-            return false;
-        }
-
-        @Override
-        public int hashCode() {
-            return this.value.hashCode();
-        }
-    }
-
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty(value = "operation_type")
 
-    private OperationTypeEnum operationType;
+    private String operationType;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty(value = "trigger")
@@ -163,16 +84,16 @@ public class PolicyCreate {
         this.operationDefinition = operationDefinition;
     }
 
-    public PolicyCreate withOperationType(OperationTypeEnum operationType) {
+    public PolicyCreate withOperationType(String operationType) {
         this.operationType = operationType;
         return this;
     }
 
-    public OperationTypeEnum getOperationType() {
+    public String getOperationType() {
         return operationType;
     }
 
-    public void setOperationType(OperationTypeEnum operationType) {
+    public void setOperationType(String operationType) {
         this.operationType = operationType;
     }
 

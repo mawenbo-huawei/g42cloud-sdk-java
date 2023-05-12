@@ -59,24 +59,6 @@ public class CbrAsyncClient {
             CbrMeta.batchCreateAndDeleteVaultTags, hcClient);
     }
 
-    public CompletableFuture<CopyBackupResponse> copyBackupAsync(CopyBackupRequest request) {
-        return hcClient.asyncInvokeHttp(request, CbrMeta.copyBackup);
-    }
-
-    public AsyncInvoker<CopyBackupRequest, CopyBackupResponse> copyBackupAsyncInvoker(CopyBackupRequest request) {
-        return new AsyncInvoker<CopyBackupRequest, CopyBackupResponse>(request, CbrMeta.copyBackup, hcClient);
-    }
-
-    public CompletableFuture<CopyCheckpointResponse> copyCheckpointAsync(CopyCheckpointRequest request) {
-        return hcClient.asyncInvokeHttp(request, CbrMeta.copyCheckpoint);
-    }
-
-    public AsyncInvoker<CopyCheckpointRequest, CopyCheckpointResponse> copyCheckpointAsyncInvoker(
-        CopyCheckpointRequest request) {
-        return new AsyncInvoker<CopyCheckpointRequest, CopyCheckpointResponse>(request, CbrMeta.copyCheckpoint,
-            hcClient);
-    }
-
     public CompletableFuture<CreateCheckpointResponse> createCheckpointAsync(CreateCheckpointRequest request) {
         return hcClient.asyncInvokeHttp(request, CbrMeta.createCheckpoint);
     }
@@ -170,15 +152,6 @@ public class CbrAsyncClient {
             CbrMeta.disassociateVaultPolicy, hcClient);
     }
 
-    public CompletableFuture<ImportBackupResponse> importBackupAsync(ImportBackupRequest request) {
-        return hcClient.asyncInvokeHttp(request, CbrMeta.importBackup);
-    }
-
-    public AsyncInvoker<ImportBackupRequest, ImportBackupResponse> importBackupAsyncInvoker(
-        ImportBackupRequest request) {
-        return new AsyncInvoker<ImportBackupRequest, ImportBackupResponse>(request, CbrMeta.importBackup, hcClient);
-    }
-
     public CompletableFuture<ListBackupsResponse> listBackupsAsync(ListBackupsRequest request) {
         return hcClient.asyncInvokeHttp(request, CbrMeta.listBackups);
     }
@@ -220,17 +193,6 @@ public class CbrAsyncClient {
 
     public AsyncInvoker<ListVaultRequest, ListVaultResponse> listVaultAsyncInvoker(ListVaultRequest request) {
         return new AsyncInvoker<ListVaultRequest, ListVaultResponse>(request, CbrMeta.listVault, hcClient);
-    }
-
-    public CompletableFuture<MigrateVaultResourceResponse> migrateVaultResourceAsync(
-        MigrateVaultResourceRequest request) {
-        return hcClient.asyncInvokeHttp(request, CbrMeta.migrateVaultResource);
-    }
-
-    public AsyncInvoker<MigrateVaultResourceRequest, MigrateVaultResourceResponse> migrateVaultResourceAsyncInvoker(
-        MigrateVaultResourceRequest request) {
-        return new AsyncInvoker<MigrateVaultResourceRequest, MigrateVaultResourceResponse>(request,
-            CbrMeta.migrateVaultResource, hcClient);
     }
 
     public CompletableFuture<RemoveVaultResourceResponse> removeVaultResourceAsync(RemoveVaultResourceRequest request) {
@@ -314,17 +276,6 @@ public class CbrAsyncClient {
         ShowProtectableRequest request) {
         return new AsyncInvoker<ShowProtectableRequest, ShowProtectableResponse>(request, CbrMeta.showProtectable,
             hcClient);
-    }
-
-    public CompletableFuture<ShowReplicationCapabilitiesResponse> showReplicationCapabilitiesAsync(
-        ShowReplicationCapabilitiesRequest request) {
-        return hcClient.asyncInvokeHttp(request, CbrMeta.showReplicationCapabilities);
-    }
-
-    public AsyncInvoker<ShowReplicationCapabilitiesRequest, ShowReplicationCapabilitiesResponse> showReplicationCapabilitiesAsyncInvoker(
-        ShowReplicationCapabilitiesRequest request) {
-        return new AsyncInvoker<ShowReplicationCapabilitiesRequest, ShowReplicationCapabilitiesResponse>(request,
-            CbrMeta.showReplicationCapabilities, hcClient);
     }
 
     public CompletableFuture<ShowVaultResponse> showVaultAsync(ShowVaultRequest request) {

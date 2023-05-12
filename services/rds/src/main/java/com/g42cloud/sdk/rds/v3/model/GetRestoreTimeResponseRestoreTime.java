@@ -13,36 +13,36 @@ public class GetRestoreTimeResponseRestoreTime {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty(value = "start_time")
 
-    private Integer startTime;
+    private Long startTime;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty(value = "end_time")
 
-    private Integer endTime;
+    private Long endTime;
 
-    public GetRestoreTimeResponseRestoreTime withStartTime(Integer startTime) {
+    public GetRestoreTimeResponseRestoreTime withStartTime(Long startTime) {
         this.startTime = startTime;
         return this;
     }
 
-    public Integer getStartTime() {
+    public Long getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Integer startTime) {
+    public void setStartTime(Long startTime) {
         this.startTime = startTime;
     }
 
-    public GetRestoreTimeResponseRestoreTime withEndTime(Integer endTime) {
+    public GetRestoreTimeResponseRestoreTime withEndTime(Long endTime) {
         this.endTime = endTime;
         return this;
     }
 
-    public Integer getEndTime() {
+    public Long getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Integer endTime) {
+    public void setEndTime(Long endTime) {
         this.endTime = endTime;
     }
 

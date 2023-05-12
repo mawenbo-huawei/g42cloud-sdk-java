@@ -372,6 +372,16 @@ public class EcsAsyncClient {
             EcsMeta.novaAssociateSecurityGroup, hcClient);
     }
 
+    public CompletableFuture<NovaAttachInterfaceResponse> novaAttachInterfaceAsync(NovaAttachInterfaceRequest request) {
+        return hcClient.asyncInvokeHttp(request, EcsMeta.novaAttachInterface);
+    }
+
+    public AsyncInvoker<NovaAttachInterfaceRequest, NovaAttachInterfaceResponse> novaAttachInterfaceAsyncInvoker(
+        NovaAttachInterfaceRequest request) {
+        return new AsyncInvoker<NovaAttachInterfaceRequest, NovaAttachInterfaceResponse>(request,
+            EcsMeta.novaAttachInterface, hcClient);
+    }
+
     public CompletableFuture<NovaCreateKeypairResponse> novaCreateKeypairAsync(NovaCreateKeypairRequest request) {
         return hcClient.asyncInvokeHttp(request, EcsMeta.novaCreateKeypair);
     }
